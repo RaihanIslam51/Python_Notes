@@ -1,1 +1,4186 @@
+<div align="center">
+
+# Python Notes
+
+> A complete reference of everything I have practiced.
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Intro](#intro)
+- [Print, User Input, Comment, Variable and Naming](#print--user-input--comment--variable-and-naming)
+- [Type Casting](#type-casting)
+- [Data Types](#data-types)
+  - [Numbers](#numbers)
+  - [Booleans](#booleans)
+  - [Strings](#strings)
+- [Operators](#operators)
+  - [Arithmetic Operators](#arithmetic-operators)
+  - [Assignment Operators](#assignment-operators)
+  - [Comparison Operators](#comparison-operators)
+  - [Logical Operators](#logical-operators)
+  - [Identity Operators](#identity-operators)
+  - [Membership Operators](#membership-operators)
+  - [Bitwise Operators](#bitwise-operators)
+  - [Operator Precedence](#operator-precedence)
+- [Lists](#lists)
+  - [Access List Items](#access-list-items)
+  - [Change List Items](#change-list-items)
+  - [Add List Items](#add-list-items)
+  - [Remove List Items](#remove-list-items)
+  - [Loop in List](#loop-in-list)
+  - [List Comprehension](#list-comprehension)
+  - [Sort List](#sort-list)
+  - [Copy List](#copy-list)
+  - [Join Lists](#join-lists)
+  - [List Methods](#list-methods--quick-reference)
+- [Tuples](#tuples)
+  - [Access Tuple Items](#access-tuple-items)
+  - [Update Tuples](#update-tuples)
+  - [Unpack Tuple](#unpack-tuple)
+  - [Loop In Tuple](#loop-in-tuple)
+  - [Join Tuples](#join-tuples)
+  - [Tuple Methods](#tuple-methods)
+- [Sets](#sets)
+  - [Access Set Items](#access-set-items)
+  - [Add Set Items](#add-set-items)
+  - [Remove Set Items](#remove-set-items)
+  - [Loop In Set](#loop-in-set)
+  - [Join Sets](#join-sets)
+  - [Set Methods](#set-methods)
+  - [Frozenset](#frozenset)
+- [Dictionaries](#dictionaries)
+  - [Access Dictionary Items](#access-dictionary-items)
+  - [Change Dictionary Values](#change-dictionary-values)
+  - [Add Dictionary Items](#add-dictionary-items)
+  - [Remove Dictionary Items](#remove-dictionary-items)
+  - [Loop In Dictionary](#loop-in-dictionary)
+  - [Copy Dictionary](#copy-dictionary)
+  - [Nested Dictionaries](#nested-dictionaries)
+  - [Dictionary Methods](#dictionary-methods)
+- [Conditional Statements](#conditional-statements)
+  - [Logical Operators in Conditions](#logical-operators-in-conditions)
+  - [Nested If Else](#nested-if-else)
+  - [The pass Statement](#the-pass-statement)
+  - [Match Statement](#match-statement)
+- [Loops](#loops)
+  - [While Loop](#while-loop)
+  - [For Loop](#for-loop)
+- [Functions](#functions)
+  - [Function Arguments](#function-arguments)
+  - [Lambda Functions](#lambda-functions)
+  - [Scope](#scope)
+  - [Recursion](#recursion)
+  - [Decorators](#decorators)
+- [Range](#range)
+- [Modules](#modules)
+- [Datetime](#datetime)
+- [Math](#math)
+- [JSON](#json)
+- [RegEx](#regex)
+- [PIP](#pip)
+- [Try Except](#try-except)
+- [OOP — Object-Oriented Programming](#oop--object-oriented-programming)
+  - [Classes and Objects](#classes-and-objects)
+  - [The `__init__()` Method](#the-__init__-method)
+  - [The `self` Parameter](#the-self-parameter)
+  - [Object Methods](#object-methods)
+  - [Modify and Delete Object Properties](#modify-and-delete-object-properties)
+  - [Inheritance](#inheritance)
+  - [The `super()` Function](#the-super-function)
+  - [Override Methods](#override-methods)
+  - [Multiple Inheritance](#multiple-inheritance)
+  - [Encapsulation](#encapsulation)
+  - [Getters and Setters (`@property`)](#getters-and-setters-property)
+  - [Polymorphism](#polymorphism)
+  - [Abstraction](#abstraction)
+  - [Class Variables vs Instance Variables](#class-variables-vs-instance-variables)
+  - [Class Methods and Static Methods](#class-methods-and-static-methods)
+  - [Magic / Dunder Methods](#magic--dunder-methods)
+  - [OOP Quick Reference](#oop-quick-reference)
+
+---
+
+## Intro
+
+Python is a **high-level**, **interpreted**, **general-purpose** programming language.
+It emphasizes **code readability** and **simplicity** — designed so that developers can express concepts in fewer lines of code.
+
+```python
+print("Hello World!")
+print("Learning Python")
+print("It is awesome!")
+```
+
+> **Key Facts:**
+> - Python files use the `.py` extension
+> - Python uses **indentation** instead of `{}` braces for code blocks
+> - Python is **dynamically typed** — no need to declare variable types
+
+---
+
+## Print , User Input , Comment , Variable and Naming
+
+### Print
+
+The `print()` function outputs text or values to the console.
+
+```python
+print("Hello World!")           # String output
+print(10)                       # Number output
+print("Hello", "World")         # Multiple values (separated by space)
+print("a", "b", "c", sep="-")   # Custom separator — Output: a-b-c
+print("Hello", end=" ")         # Custom end character (default is newline)
+```
+
+---
+
+### User Input
+
+Python allows for user input. That means we are able to ask the user for input using the `input()` function.
+
+```python
+username = input("Enter username: ")
+print("Username is: " + username)
+```
+*(Execution pauses and waits for the user to type something and press Enter)*
+
+By default, the `input()` function always returns a string. If you expect a number, you must cast it (e.g., using `int()` or `float()`):
+
+```python
+age = int(input("Enter your age: "))
+print(age + 1)
+```
+
+---
+
+### Comment
+
+Comments are **ignored by the interpreter** and are used to explain code.
+
+```python
+# This is a single-line comment
+
+"""
+This is a
+multi-line comment (docstring)
+"""
+```
+
+> **Note:** Triple-quoted strings used as comments are technically **docstrings**, not comments. But they work the same way when not assigned to a variable.
+
+---
+
+### Variable
+
+Variables **store data values**. Python has no keyword for declaring variables — just assign a value directly.
+
+```python
+x = 10
+name = "Rijoan Maruf"
+is_active = True
+```
+
+---
+
+### Variable Naming Rules
+
+| Allowed | Not Allowed |
+|---|---|
+| Start with a letter or `_` | Start with a number |
+| Letters, digits, underscores | Hyphens `-` or spaces |
+| Case-sensitive (`name` != `Name`) | Python keywords (`if`, `for`, etc.) |
+
+```python
+# Valid names
+myVariable = "hello"
+my_variable = "hello"
+_variable = "hello"
+VARIABLE = "hello"
+myVar2 = "hello"
+
+# Invalid names
+# 2variable = "hello"   # Cannot start with a number
+# my-variable = "hello" # Hyphens not allowed
+```
+
+---
+
+### Multiple Variables
+
+**Assign different values in one line:**
+
+```python
+x, y, z = "Orange", "Banana", "Cherry"
+print(x)  # Orange
+print(y)  # Banana
+print(z)  # Cherry
+```
+
+**Assign the same value to multiple variables:**
+
+```python
+x = y = z = "Orange"
+print(x)  # Orange
+print(y)  # Orange
+print(z)  # Orange
+```
+
+---
+
+### Unpack from a Collection
+
+Extract values from a list (or tuple) directly into variables.
+
+```python
+fruits = ["apple", "banana", "cherry"]
+x, y, z = fruits
+
+print(x)  # apple
+print(y)  # banana
+print(z)  # cherry
+```
+
+---
+
+### Global Variable
+
+| Scope | Meaning |
+|---|---|
+| **Global** | Created outside a function — accessible everywhere |
+| **Local** | Created inside a function — only accessible inside it |
+
+```python
+x = "awesome"          # Global variable
+
+def myfunc():
+    x = "fantastic"    # Local variable (does NOT change global x)
+    print("Python is " + x)
+
+myfunc()                  # Output: Python is fantastic
+print("Python is " + x)  # Output: Python is awesome
+```
+
+> **Note:** Use the `global` keyword inside a function if you want to **modify** the global variable.
+>
+> ```python
+> x = "awesome"
+> def myfunc():
+>     global x
+>     x = "fantastic"
+> myfunc()
+> print(x)  # fantastic
+> ```
+
+---
+
+## Type Casting
+
+Type casting is the process of **converting one data type into another**.
+
+| Function | Converts To | Example | Output |
+|---|---|---|---|
+| `int()` | Integer | `int(2.9)` | `2` |
+| `float()` | Float | `float(1)` | `1.0` |
+| `str()` | String | `str(10)` | `"10"` |
+
+### int()
+
+Converts to an **integer** (drops the decimal — does NOT round).
+
+```python
+x = int(1)      # 1
+y = int(2.2)    # 2  (truncates, not rounds)
+z = int("2")    # 2  (from string)
+
+print(x, y, z)  # Output: 1 2 2
+```
+
+---
+
+### float()
+
+Converts to a **floating-point** number.
+
+```python
+x = float(1)      # 1.0
+y = float(2.8)    # 2.8
+z = float("3")    # 3.0
+w = float("4.2")  # 4.2
+
+print(x, y, z, w)  # Output: 1.0 2.8 3.0 4.2
+```
+
+---
+
+### str()
+
+Converts to a **string**.
+
+```python
+x = str("s1")  # 's1'
+y = str(2)     # '2'
+z = str(3.0)   # '3.0'
+
+print(x, y, z)  # Output: s1 2 3.0
+```
+
+---
+
+## Data Types
+
+Python has several built-in data types. Here are the ones practiced so far:
+
+| Category | Types |
+|---|---|
+| Numeric | `int`, `float`, `complex` |
+| Text | `str` |
+| Boolean | `bool` |
+| Sequence | `list`, `tuple`, `range` |
+
+---
+
+### Numbers
+
+Python has **three** numeric types: `int`, `float`, and `complex`.
+
+#### int — Integer
+
+Whole numbers, positive or negative, with **unlimited length**.
+
+```python
+x = 1
+y = 35656222554887711
+z = -3255522
+
+print(type(x))  # <class 'int'>
+print(type(y))  # <class 'int'>
+print(type(z))  # <class 'int'>
+```
+
+#### float — Floating Point
+
+Numbers **with a decimal point**. Also supports scientific notation with `e` or `E`.
+
+```python
+x = 1.10
+y = 1.0
+z = -35.59
+
+print(type(x))  # <class 'float'>
+
+# Scientific notation
+a = 35e3    # 35000.0
+b = 12E4    # 120000.0
+c = -87.7e100
+
+print(type(a))  # <class 'float'>
+```
+
+#### complex — Complex Number
+
+Written with a **`j`** as the imaginary part.
+
+```python
+x = 3 + 5j
+y = 5j
+z = -5j
+
+print(type(x))  # <class 'complex'>
+print(type(y))  # <class 'complex'>
+```
+
+#### Random Number
+
+Python has no built-in `random()` function — use the **`random` module**.
+
+```python
+import random
+
+print(random.randrange(1, 10))  # Output: Random integer between 1 and 9
+```
+
+---
+
+### Booleans
+
+Booleans represent one of two values: **`True`** or **`False`**.
+
+```python
+a = 200
+b = 33
+
+if b > a:
+    print("b is greater than a")
+else:
+    print("b is not greater than a")  # Output: b is not greater than a
+```
+
+> **Tip:** Almost any value evaluates to `True`. Empty values like `0`, `""`, `[]`, `None` evaluate to `False`.
+
+---
+
+### Strings
+
+Strings are **sequences of characters** surrounded by single `'...'` or double `"..."` quotes.
+
+```python
+print("My Name is Rijoan Maruf")  # Output: My Name is Rijoan Maruf
+```
+
+#### Multi-line String
+
+Use **triple quotes** for strings that span multiple lines.
+
+```python
+x = """
+hello,
+i am rijoan maruf,
+i am a full stack developer
+"""
+print(x)
+```
+
+#### String as a Character Array
+
+Strings are **arrays of characters**. Access individual characters using index notation.
+
+```python
+a = "Rijoan, Maruf"
+print(a[0])   # Output: R  (first character)
+print(a[-1])  # Output: f  (last character)
+```
+
+#### Loop Through a String
+
+Iterate over every character using a `for` loop.
+
+```python
+for i in "Md Rijoan Maruf":
+    print(i)  # Prints each character on a new line
+```
+
+#### String Length
+
+Use `len()` to count characters.
+
+```python
+x = "Rijoan"
+print(len(x))  # Output: 6
+```
+
+#### Check String — `in` / `not in`
+
+Check whether a substring exists inside a string.
+
+```python
+text = "Hello i am rijoan"
+print("am" in text)       # Output: True
+
+text = "Hello, i am a full stack web developer"
+print("web" not in text)  # Output: False
+```
+
+#### String Slicing
+
+Extract a portion of a string using `[start:end]` notation.
+
+| Slice | Meaning |
+|---|---|
+| `x[2:4]` | Characters from index 2 up to (not including) 4 |
+| `x[:5]` | From the start up to index 4 |
+| `x[5:]` | From index 5 to the end |
+| `x[-5:-2]` | Negative indexing — counts from end |
+
+```python
+x = "Rijoan Maruf"
+print(x[2:4])    # Output: jo
+print(x[:5])     # Output: Rijoa
+print(x[5:])     # Output: n Maruf
+print(x[-5:-2])  # Output: Mar
+```
+
+#### String Concatenation
+
+Join strings using the **`+`** operator.
+
+```python
+a = "Hello"
+b = "World"
+c = a + " " + b
+print(c)  # Output: Hello World
+```
+
+#### F-String (Formatted String Literal)
+
+The **most modern** and readable way to embed expressions inside strings. Prefix the string with `f`.
+
+```python
+age = 24
+name = "Rijoan Maruf"
+txt = f"My name is {name}, I am {age} years old"
+print(txt)  # Output: My name is Rijoan Maruf, I am 24 years old
+
+# Expressions work inside {}
+print(f"5 + 3 = {5 + 3}")  # Output: 5 + 3 = 8
+```
+
+#### Escape Character
+
+Use `\` to insert special characters that would otherwise break the string.
+
+| Escape | Result |
+|---|---|
+| `\"` | Double quote |
+| `\'` | Single quote |
+| `\\` | Backslash |
+| `\n` | New line |
+| `\t` | Tab |
+
+```python
+txt = "We are the so-called \"Vikings\" from the north."
+print(txt)  # Output: We are the so-called "Vikings" from the north.
+```
+
+#### String Methods — Quick Reference
+
+| Method | Description |
+|---|---|
+| `upper()` | Converts string to uppercase |
+| `lower()` | Converts string to lowercase |
+| `strip()` | Removes whitespace from both ends |
+| `replace(old, new)` | Replaces a substring with another |
+| `split(sep)` | Splits string into a list |
+| `capitalize()` | Uppercases only the first character |
+| `casefold()` | Converts to lowercase (aggressive, for comparisons) |
+| `center(width)` | Centers the string in a given width |
+| `count(value)` | Counts occurrences of a value |
+| `endswith(value)` | Returns `True` if string ends with value |
+| `find(value)` | Returns index of first match, `-1` if not found |
+| `index(value)` | Like `find()` but raises `ValueError` if not found |
+
+#### 1. `upper()` — Convert to Uppercase
+
+```python
+x = "Software Engineering"
+print(x.upper())  # Output: SOFTWARE ENGINEERING
+```
+
+#### 2. `lower()` — Convert to Lowercase
+
+```python
+x = "Web DEVELOPMENT"
+print(x.lower())  # Output: web development
+```
+
+#### 3. `strip()` — Remove Whitespace from Both Ends
+
+```python
+a = "   Rijoan    Maruf"
+print(a.strip())  # Output: Rijoan    Maruf
+```
+
+#### 4. `replace(old, new)` — Replace a Substring
+
+```python
+a = "Hello World"
+print(a.replace("H", "J"))  # Output: Jello World
+```
+
+#### 5. `split(separator)` — Split into a List
+
+```python
+a = "Md Rijoan Maruf"
+print(a.split(" "))  # Output: ['Md', 'Rijoan', 'Maruf']
+```
+
+#### 6. `capitalize()` — Uppercase the First Character
+
+```python
+txt = "hello, welcome to my project"
+print(txt.capitalize())  # Output: Hello, welcome to my project
+```
+
+#### 7. `casefold()` — Aggressive Lowercase
+
+More thorough than `lower()` — handles special international characters.
+
+```python
+txt = "Hello, And Welcome To My World!"
+print(txt.casefold())  # Output: hello, and welcome to my world!
+```
+
+#### 8. `center(width)` — Center the String
+
+```python
+txt = "banana"
+print(txt.center(40))  # Output:                  banana
+```
+
+#### 9. `count(value)` — Count Occurrences
+
+```python
+txt = "I love apples, apple are my favorite fruit. apple"
+print(txt.count("apple"))  # Output: 3
+
+# With range: count(value, start, end)
+txt = "I love apples, apple are my favorite fruit"
+print(txt.count("apple", 10, 24))  # Output: 1
+```
+
+#### 10. `endswith(value)` — Check End of String
+
+```python
+txt = "Hello, welcome to my world."
+print(txt.endswith("."))  # Output: True
+```
+
+#### 11. `find(value)` — Find Position of Substring
+
+Returns the **index** of the first occurrence. Returns **`-1`** if not found.
+
+```python
+txt = "Hello, welcome to my world."
+print(txt.find("welcome"))  # Output: 7
+
+# With range: find(value, start, end)
+print(txt.find("e", 5, 10))  # Output: 8
+```
+
+#### 12. `index(value)` — Like `find()` but Raises Error
+
+Same as `find()`, but raises a **`ValueError`** if the value is not found.
+
+```python
+txt = "Hello, welcome to my world."
+print(txt.index("welcome"))  # Output: 7
+```
+
+---
+
+## Operators
+
+Python supports **7 categories of operators**: Arithmetic, Assignment, Comparison, Logical, Identity, Membership, and Bitwise. Each serves a different purpose when working with data.
+
+### Arithmetic Operators
+
+Perform basic **mathematical** operations.
+
+| Operator | Name | Example | Result |
+|---|---|---|---|
+| `+` | Addition | `15 + 4` | `19` |
+| `-` | Subtraction | `15 - 4` | `11` |
+| `*` | Multiplication | `15 * 4` | `60` |
+| `/` | Division | `15 / 4` | `3.75` |
+| `%` | Modulus | `15 % 4` | `3` |
+| `**` | Exponentiation | `15 ** 4` | `50625` |
+| `//` | Floor Division | `15 // 4` | `3` |
+
+```python
+x = 15
+y = 4
+
+print(x + y)   # Output: 19
+print(x - y)   # Output: 11
+print(x * y)   # Output: 60
+print(x / y)   # Output: 3.75
+print(x % y)   # Output: 3
+print(x ** y)  # Output: 50625
+print(x // y)  # Output: 3
+```
+
+---
+
+### Assignment Operators
+
+Used to **assign values** to variables.
+
+| Operator | Example | Equivalent |
+|---|---|---|
+| `=` | `x = 5` | `x = 5` |
+| `+=` | `x += 3` | `x = x + 3` |
+| `-=` | `x -= 3` | `x = x - 3` |
+| `*=` | `x *= 3` | `x = x * 3` |
+| `/=` | `x /= 3` | `x = x / 3` |
+| `%=` | `x %= 3` | `x = x % 3` |
+| `//=` | `x //= 3` | `x = x // 3` |
+| `**=` | `x **= 3` | `x = x ** 3` |
+| `&=` | `x &= 3` | `x = x & 3` |
+| `\|=` | `x \|= 3` | `x = x \| 3` |
+| `^=` | `x ^= 3` | `x = x ^ 3` |
+| `>>=` | `x >>= 3` | `x = x >> 3` |
+| `<<=` | `x <<= 3` | `x = x << 3` |
+
+---
+
+### Comparison Operators
+
+Compare two values and return a **boolean** (`True` or `False`).
+
+| Operator | Name | Example | Result |
+|---|---|---|---|
+| `==` | Equal | `5 == 3` | `False` |
+| `!=` | Not equal | `5 != 3` | `True` |
+| `>` | Greater than | `5 > 3` | `True` |
+| `<` | Less than | `5 < 3` | `False` |
+| `>=` | Greater than or equal | `5 >= 5` | `True` |
+| `<=` | Less than or equal | `5 <= 3` | `False` |
+
+```python
+x = 5
+y = 3
+
+print(x == y)  # Output: False
+print(x != y)  # Output: True
+print(x > y)   # Output: True
+print(x < y)   # Output: False
+print(x >= y)  # Output: True
+print(x <= y)  # Output: False
+```
+
+---
+
+### Logical Operators
+
+**Combine** multiple conditions into one expression.
+
+| Operator | Description | Example |
+|---|---|---|
+| `and` | Both conditions must be `True` | `x > 0 and x < 10` |
+| `or` | At least one condition must be `True` | `x > 0 or x < 10` |
+| `not` | Reverses the result | `not(x > 3)` |
+
+```python
+x = 5
+print(x > 0 and x < 10)        # Output: True
+print(x > 0 or x < 10)         # Output: True
+print(not(x > 3 and x < 10))   # Output: False
+```
+
+---
+
+### Identity Operators
+
+Check if two variables point to the **same object in memory** — not just equal values.
+
+| Operator | Description |
+|---|---|
+| `is` | Returns `True` if both variables are the same object |
+| `is not` | Returns `True` if they are different objects |
+
+```python
+x = ["apple", "banana"]
+y = ["apple", "banana"]
+z = x                   # z points to the SAME object as x
+
+print(x is z)      # Output: True  — same object
+print(x is y)      # Output: False — different objects (even though values are equal)
+print(x == y)      # Output: True  — values are equal
+
+print(x is not z)  # Output: False
+print(x is not y)  # Output: True
+```
+
+> **`is` vs `==`:** Use `==` to compare **values**. Use `is` to check if two variables are the **exact same object** in memory.
+
+---
+
+### Membership Operators
+
+Check if a value **exists** inside a sequence (list, string, tuple, etc.).
+
+| Operator | Description |
+|---|---|
+| `in` | Returns `True` if the value is in the sequence |
+| `not in` | Returns `True` if the value is NOT in the sequence |
+
+```python
+fruits = ["apple", "banana", "cherry"]
+
+print("banana" in fruits)         # Output: True
+print("pineapple" not in fruits)  # Output: True
+
+# Also works with strings
+text = "Hello World"
+print("Hello" in text)            # Output: True
+```
+
+---
+
+### Bitwise Operators
+
+Operate on numbers at the **binary (bit) level**.
+
+| Operator | Name | Example | Result |
+|---|---|---|---|
+| `&` | AND | `6 & 3` | `2` |
+| `\|` | OR | `6 \| 3` | `7` |
+| `^` | XOR | `6 ^ 3` | `5` |
+| `~` | NOT | `~3` | `-4` |
+| `<<` | Left Shift | `3 << 2` | `12` |
+| `>>` | Right Shift | `8 >> 2` | `2` |
+
+```python
+print(6 & 3)   # Output: 2  — AND:         0110 & 0011 = 0010
+print(6 | 3)   # Output: 7  — OR:          0110 | 0011 = 0111
+print(6 ^ 3)   # Output: 5  — XOR:         0110 ^ 0011 = 0101
+print(~3)      # Output: -4 — NOT:         inverts all bits
+print(3 << 2)  # Output: 12 — Left Shift:  multiplies by 2^2
+print(8 >> 2)  # Output: 2  — Right Shift: divides by 2^2
+```
+
+---
+
+### Operator Precedence
+
+When an expression has multiple operators, Python evaluates them by **priority** (highest first):
+
+| Priority | Operator | Description |
+|---|---|---|
+| 1 (Highest) | `()` | Parentheses |
+| 2 | `**` | Exponentiation |
+| 3 | `+x`, `-x`, `~x` | Unary operators |
+| 4 | `*`, `/`, `//`, `%` | Multiplication / Division |
+| 5 | `+`, `-` | Addition / Subtraction |
+| 6 | `<<`, `>>` | Bitwise Shifts |
+| 7 | `&` | Bitwise AND |
+| 8 | `^` | Bitwise XOR |
+| 9 | `\|` | Bitwise OR |
+| 10 | `==`, `!=`, `>`, `>=`, `<`, `<=`, `is`, `is not`, `in`, `not in` | Comparisons |
+| 11 | `not` | Logical NOT |
+| 12 | `and` | Logical AND |
+| 13 (Lowest) | `or` | Logical OR |
+
+---
+
+## Lists
+
+A **list** is one of Python's most versatile data structures.
+
+| Property | Detail |
+|---|---|
+| **Ordered** | Items have a defined order and keep it |
+| **Changeable** | You can add, remove, and modify items |
+| **Allows Duplicates** | Same value can appear multiple times |
+| **Mixed Types** | Can hold different data types together |
+
+```python
+# Basic list
+fruits = ["apple", "banana", "cherry"]
+print(fruits)          # Output: ['apple', 'banana', 'cherry']
+print(len(fruits))     # Output: 3
+
+# Duplicates allowed
+thislist = ["apple", "banana", "cherry", "apple", "cherry"]
+print(len(thislist))   # Output: 5
+
+# Mixed data types
+mixed = ["abc", 34, True, 40, "male"]
+print(mixed)
+
+# Check the type
+print(type(fruits))    # Output: <class 'list'>
+```
+
+---
+
+### Access List Items
+
+#### By Index (0-based)
+
+```python
+thislist = ["apple", "banana", "cherry"]
+print(thislist[0])   # Output: apple
+print(thislist[1])   # Output: banana
+print(thislist[2])   # Output: cherry
+```
+
+#### Negative Index (Count from End)
+
+```python
+thislist = ["apple", "banana", "cherry"]
+print(thislist[-1])  # Output: cherry  (last item)
+print(thislist[-2])  # Output: banana  (second from last)
+```
+
+#### Range / Slicing
+
+```python
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "melon", "mango"]
+
+print(thislist[2:5])    # Output: ['cherry', 'orange', 'kiwi']
+print(thislist[:4])     # Output: ['apple', 'banana', 'cherry', 'orange']
+print(thislist[2:])     # Output: ['cherry', 'orange', 'kiwi', 'melon', 'mango']
+print(thislist[-4:-1])  # Output: ['orange', 'kiwi', 'melon']
+```
+
+#### Check if Item Exists
+
+```python
+thislist = ["apple", "banana", "cherry"]
+if "apple" in thislist:
+    print("Yes, 'apple' is in the fruits list")
+```
+
+---
+
+### Change List Items
+
+```python
+# Change a single item
+thislist = ["apple", "banana", "cherry"]
+thislist[1] = "blackcurrant"
+print(thislist)  # Output: ['apple', 'blackcurrant', 'cherry']
+
+# Change a range of items
+thislist = ["apple", "banana", "cherry", "orange", "kiwi", "mango"]
+thislist[1:3] = ["blackcurrant", "watermelon"]
+print(thislist)  # Output: ['apple', 'blackcurrant', 'watermelon', 'orange', 'kiwi', 'mango']
+
+# Insert at specific position (no replacement)
+thislist = ["apple", "banana", "cherry"]
+thislist.insert(2, "watermelon")
+print(thislist)  # Output: ['apple', 'banana', 'watermelon', 'cherry']
+```
+
+---
+
+### Add List Items
+
+| Method | Description |
+|---|---|
+| `append(item)` | Adds item to the **end** |
+| `insert(index, item)` | Inserts item at a **specific position** |
+| `extend(iterable)` | Adds all items from another list/iterable |
+
+```python
+# append()
+thislist = ["apple", "banana", "cherry"]
+thislist.append("orange")
+print(thislist)  # Output: ['apple', 'banana', 'cherry', 'orange']
+
+# insert()
+thislist = ["apple", "banana", "cherry"]
+thislist.insert(1, "orange")
+print(thislist)  # Output: ['apple', 'orange', 'banana', 'cherry']
+
+# extend()
+thislist = ["apple", "banana", "cherry"]
+tropical = ["mango", "pineapple", "papaya"]
+thislist.extend(tropical)
+print(thislist)  # Output: ['apple', 'banana', 'cherry', 'mango', 'pineapple', 'papaya']
+```
+
+---
+
+### Remove List Items
+
+| Method | Description |
+|---|---|
+| `remove(value)` | Removes first item with the given value |
+| `pop(index)` | Removes item at given index (default: last) |
+| `del list[index]` | Deletes item at index or the entire list |
+| `clear()` | Empties the list (list still exists) |
+
+```python
+# remove()
+thislist = ["apple", "banana", "cherry"]
+thislist.remove("banana")
+print(thislist)  # Output: ['apple', 'cherry']
+
+# pop()
+thislist = ["apple", "banana", "cherry"]
+thislist.pop(1)
+print(thislist)  # Output: ['apple', 'cherry']
+
+# del
+thislist = ["apple", "banana", "cherry"]
+del thislist[0]
+print(thislist)  # Output: ['banana', 'cherry']
+
+# del (entire list)
+thislist = ["apple", "banana", "cherry"]
+del thislist     # list no longer exists!
+
+# clear()
+thislist = ["apple", "banana", "cherry"]
+thislist.clear()
+print(thislist)  # Output: []
+```
+
+---
+
+### Loop in List
+
+**4 ways to loop through a list:**
+
+```python
+thislist = ["apple", "banana", "cherry"]
+
+# 1. for loop (most common)
+for x in thislist:
+    print(x)
+
+# 2. for loop with index (using range + len)
+for i in range(len(thislist)):
+    print(thislist[i])
+
+# 3. while loop
+i = 0
+while i < len(thislist):
+    print(thislist[i])
+    i = i + 1
+
+# 4. List Comprehension loop
+[print(x) for x in thislist]
+```
+
+---
+
+### List Comprehension
+
+A **concise one-liner** to create a new list based on an existing iterable.
+
+**Syntax:** `newlist = [expression for item in iterable if condition]`
+
+```python
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+# Traditional way (5 lines)
+newlist = []
+for x in fruits:
+    if "a" in x:
+        newlist.append(x)
+print(newlist)  # Output: ['apple', 'banana', 'mango']
+
+# List Comprehension (1 line — same result!)
+newlist = [x for x in fruits if "a" in x]
+print(newlist)  # Output: ['apple', 'banana', 'mango']
+```
+
+> **More Examples:**
+>
+> ```python
+> # All items uppercase
+> upper_list = [x.upper() for x in fruits]
+>
+> # Only items that are not "apple"
+> no_apple = [x for x in fruits if x != "apple"]
+>
+> # Squares of numbers 0-9
+> squares = [x ** 2 for x in range(10)]
+> ```
+
+---
+
+### Sort List
+
+```python
+# Sort ascending (A-Z / smallest to largest)
+thislist = ["orange", "mango", "kiwi", "pineapple", "banana"]
+thislist.sort()
+print(thislist)  # Output: ['banana', 'kiwi', 'mango', 'orange', 'pineapple']
+
+# Sort descending (Z-A / largest to smallest)
+thislist.sort(reverse=True)
+print(thislist)  # Output: ['pineapple', 'orange', 'mango', 'kiwi', 'banana']
+
+# Custom sort — sort by closeness to 50
+def myfunc(n):
+    return abs(n - 50)
+
+thislist = [100, 50, 65, 82, 23]
+thislist.sort(key=myfunc)
+print(thislist)  # Output: [50, 65, 23, 82, 100]
+
+# Reverse current order (does NOT sort, just reverses)
+thislist = ["banana", "Orange", "Kiwi", "cherry"]
+thislist.reverse()
+print(thislist)  # Output: ['cherry', 'Kiwi', 'Orange', 'banana']
+```
+
+---
+
+### Copy List
+
+> **Warning:** `list2 = list1` does **NOT** copy the list — it creates another reference to the **same** object. Changing one will change the other!
+
+| Method | How |
+|---|---|
+| `copy()` | Built-in list copy method |
+| `list()` | Pass original into `list()` constructor |
+| `[:]` | Slice the whole list |
+
+```python
+thislist = ["apple", "banana", "cherry"]
+
+# 1. copy() method
+mylist = thislist.copy()
+print(mylist)  # Output: ['apple', 'banana', 'cherry']
+
+# 2. list() constructor
+mylist = list(thislist)
+print(mylist)  # Output: ['apple', 'banana', 'cherry']
+
+# 3. Slice operator [:]
+mylist = thislist[:]
+print(mylist)  # Output: ['apple', 'banana', 'cherry']
+```
+
+---
+
+### Join Lists
+
+```python
+list1 = ["a", "b", "c"]
+list2 = [1, 2, 3]
+
+# 1. Using + operator
+list3 = list1 + list2
+print(list3)  # Output: ['a', 'b', 'c', 1, 2, 3]
+
+# 2. Using a loop with append()
+for x in list2:
+    list1.append(x)
+print(list1)  # Output: ['a', 'b', 'c', 1, 2, 3]
+
+# 3. Using extend()
+list1 = ["a", "b", "c"]
+list1.extend(list2)
+print(list1)  # Output: ['a', 'b', 'c', 1, 2, 3]
+```
+
+---
+
+### List Methods — Quick Reference
+
+| Method | Description |
+|---|---|
+| `append(item)` | Adds an element at the **end** |
+| `insert(i, item)` | Inserts element at position `i` |
+| `extend(iterable)` | Adds all items from another iterable |
+| `remove(value)` | Removes first occurrence of `value` |
+| `pop(index)` | Removes and returns item at `index` |
+| `clear()` | Removes all elements |
+| `sort()` | Sorts the list in-place |
+| `reverse()` | Reverses the list in-place |
+| `copy()` | Returns a shallow copy |
+| `index(value)` | Returns index of first `value` |
+| `count(value)` | Returns number of occurrences of `value` |
+
+---
+
+
+---
+
+## Tuples
+
+A **tuple** is a collection which is ordered and **unchangeable** (immutable).
+
+| Property | Detail |
+|---|---|
+| **Ordered** | Items have a defined order and keep it |
+| **Unchangeable** | You cannot change, add, or remove items after creation |
+| **Allows Duplicates** | Same value can appear multiple times |
+
+```python
+# Basic tuple
+thistuple = ("apple", "banana", "cherry")
+print(thistuple)  # Output: ('apple', 'banana', 'cherry')
+
+# Without parentheses
+thistuple = "apple", "banana", "cherry"
+print(thistuple)  # Output: ('apple', 'banana', 'cherry')
+
+# Tuple Length
+print(len(thistuple))  # Output: 3
+
+# Tuple with one item (must have a comma)
+thistuple = ("apple",)
+print(type(thistuple))  # Output: <class 'tuple'>
+
+# NOT a tuple (it's a string)
+thistuple = ("apple")
+print(type(thistuple))  # Output: <class 'str'>
+
+# Empty Tuple
+thistuple = ()
+print(type(thistuple))  # Output: <class 'tuple'>
+
+# Mixed Data Types
+tuple1 = ("apple", "banana", "cherry")
+tuple2 = (1, 5, 7, 9, 3)
+tuple3 = (True, False, False)
+
+# The tuple() Constructor
+thistuple = tuple(("apple", "banana", "cherry")) # note the double round-brackets
+print(thistuple)  # Output: ('apple', 'banana', 'cherry')
+```
+
+---
+
+### Access Tuple Items
+
+```python
+# Access Items
+thistuple = ("apple", "banana", "cherry")
+print(thistuple[1])  # Output: banana
+
+# Negative Indexing
+thistuple = ("apple", "banana", "cherry")
+print(thistuple[-1])  # Output: cherry
+
+# Range of indexed
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[2:5])  # Output: ('cherry', 'orange', 'kiwi')
+# Note: The search will start at index 2 (included) and end at index 5 (not included).
+
+# Range of Negative Indexes
+thistuple = ("apple", "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(thistuple[-4:-1])  # Output: ('orange', 'kiwi', 'melon')
+
+# Check if Item Exists
+thistuple = ("apple", "banana", "cherry")
+if "apple" in thistuple:
+  print("Yes, 'apple' is in the fruits tuple")  # Output: Yes, 'apple' is in the fruits tuple
+```
+
+---
+
+### Update Tuples
+
+Since tuples are **unchangeable**, you cannot add, remove, or change items directly. You must first convert the tuple to a list.
+
+```python
+# Change Tuple values
+x = ("apple", "banana", "cherry")
+y = list(x)
+y[1] = "kiwi"
+x = tuple(y)
+
+# Add Items
+thistuple = ("apple", "banana", "cherry")
+y = list(thistuple)
+y.append("orange")
+thistuple = tuple(y)
+print(y)  # Output: ['apple', 'banana', 'cherry', 'orange']
+
+# Add items using another tuple
+thistuple = ("apple", "banana", "cherry")
+y = ("orange",)
+thistuple += y
+print(thistuple)  # Output: ('apple', 'banana', 'cherry', 'orange')
+
+# Remove Items
+thistuple = ("apple", "banana", "cherry")
+y = list(thistuple) # First convert into list then remove
+y.remove("apple")
+thistuple = tuple(y)
+print(y)  # Output: ['banana', 'cherry']
+
+# Completely Delete tuple
+thistuple = ("apple", "banana", "cherry")
+del thistuple
+# print(thistuple) # this will raise an error because the tuple no longer exists
+```
+
+---
+
+### Unpack Tuple
+
+Extracting values back into variables is called "unpacking".
+
+```python
+# Unpack Tuple
+fruits = ("apple", "banana", "cherry")
+
+(green, yellow, red) = fruits
+
+print(green)   # Output: apple
+print(yellow)  # Output: banana
+print(red)     # Output: cherry
+
+# Using Asterisk
+# If the number of variables is less than the number of values,
+# you can add an * to the variable name and the values will be assigned to it as a list.
+fruits = ("apple", "banana", "cherry", "strawberry", "raspberry")
+
+(green, yellow, *red) = fruits
+
+print(green)   # Output: apple
+print(yellow)  # Output: banana
+print(red)     # Output: ['cherry', 'strawberry', 'raspberry']
+```
+
+---
+
+### Loop In Tuple
+
+```python
+# Loop
+thistuple = ("apple", "banana", "cherry")
+for x in thistuple:
+  print(x)
+  # Output: 
+  # apple
+  # banana
+  # cherry
+
+# Loop Through index number
+thistuple = ("apple", "banana", "cherry")
+for i in range(len(thistuple)):
+  print(thistuple[i])
+  # Output:
+  # apple
+  # banana
+  # cherry
+
+# Using while loop
+thistuple = ("apple", "banana", "cherry")
+i = 0
+while i < len(thistuple):
+  print(thistuple[i])
+  i = i + 1
+  # Output:
+  # apple
+  # banana
+  # cherry
+```
+
+---
+
+### Join Tuples
+
+```python
+# Join Two Tuples
+tuple1 = ("a", "b" , "c")
+tuple2 = (1, 2, 3)
+
+tuple3 = tuple1 + tuple2
+print(tuple3)  # Output: ('a', 'b', 'c', 1, 2, 3)
+
+# Multiply Tuples
+fruits = ("apple", "banana", "cherry")
+mytuple = fruits * 2
+
+print(mytuple)  # Output: ('apple', 'banana', 'cherry', 'apple', 'banana', 'cherry')
+```
+
+---
+
+### Tuple Methods
+
+| Method | Description |
+|---|---|
+| `count(value)` | Returns the number of times a specified value occurs in a tuple |
+| `index(value)` | Searches the tuple for a specified value and returns the position of where it was found |
+
+```python
+# count()
+thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)
+x = thistuple.count(5)
+print(x)  # Output: 2
+
+# index()
+thistuple = (1, 3, 7, 8, 7, 5, 4, 6, 8, 5)
+x = thistuple.index(8)
+print(x)  # Output: 3
+```
+
+
+---
+
+## Sets
+
+A **set** is a collection which is unordered, unchangeable*, and unindexed.
+* Note: Set items are unchangeable, but you can remove items and add new items.
+
+| Property | Detail |
+|---|---|
+| **Unordered** | You cannot be sure in which order the items will appear |
+| **Unchangeable** | Cannot change items, but can add or remove them |
+| **No Duplicates** | Duplicate values will be ignored |
+| **Unindexed** | You cannot access items by referring to an index or key |
+
+```python
+# Basic Set
+thisset = {"apple", "banana", "cherry", "apple"}
+print(thisset)  # Output: {'banana', 'cherry', 'apple'} (order may vary)
+
+# True and 1 are considered the same value
+thisset = {"apple", "banana", "cherry", True, 1, 2}
+print(thisset)  # Output: {True, 2, 'cherry', 'banana', 'apple'}
+
+# Length of a Set
+thisset = {"apple", "banana", "cherry"}
+print(len(thisset))  # Output: 3
+
+# type()
+myset = {"apple", "banana", "cherry"}
+print(type(myset))  # Output: <class 'set'>
+
+# The set() Constructor
+thisset = set(("apple", "banana", "cherry")) # note the double round-brackets
+print(thisset)  # Output: {'cherry', 'apple', 'banana'}
+```
+
+---
+
+### Access Set Items
+
+You cannot access items in a set by referring to an index or a key. You must loop through the set.
+
+```python
+# Access Items
+thisset = {"apple", "banana", "cherry"}
+
+for x in thisset:
+  print(x)
+  # Output:
+  # apple
+  # banana
+  # cherry
+```
+
+---
+
+### Add Set Items
+
+```python
+# Add an item using add()
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+print(thisset)  # Output: {'banana', 'orange', 'apple', 'cherry'}
+
+# Add elements from another set using update()
+thisset = {"apple", "banana", "cherry"}
+tropical = {"pineapple", "mango", "papaya"}
+thisset.update(tropical)
+print(thisset)  # Output: {'banana', 'apple', 'pineapple', 'papaya', 'cherry', 'mango'}
+
+# Add any iterable (lists, tuples, dictionaries etc.)
+thisset = {"apple", "banana", "cherry"}
+mylist = ["kiwi", "orange"]
+thisset.update(mylist)
+print(thisset)  # Output: {'kiwi', 'banana', 'orange', 'apple', 'cherry'}
+```
+
+---
+
+### Remove Set Items
+
+```python
+# remove() - raises an error if item does not exist
+thisset = {"apple", "banana", "cherry"}
+thisset.remove("banana")
+print(thisset)  # Output: {'apple', 'cherry'}
+
+# discard() - does NOT raise an error if item does not exist
+thisset = {"apple", "banana", "cherry"}
+thisset.discard("banana")
+print(thisset)  # Output: {'apple', 'cherry'}
+
+# pop() - removes a random item
+thisset = {"apple", "banana", "cherry"}
+x = thisset.pop()
+print(x)         # Output: 'cherry' (or any other item)
+print(thisset)   # Output: {'apple', 'banana'}
+
+# clear() - empties the set
+thisset = {"apple", "banana", "cherry"}
+thisset.clear()
+print(thisset)  # Output: set()
+
+# del - deletes the set completely
+thisset = {"apple", "banana", "cherry"}
+del thisset
+# print(thisset) # Raises an error because thisset no longer exists
+```
+
+---
+
+### Loop In Set
+
+```python
+# Loop items
+thisset = {"apple", "banana", "cherry"}
+
+for x in thisset:
+  print(x)
+  # Output:
+  # cherry
+  # apple
+  # banana
+```
+
+---
+
+### Join Sets
+
+There are several ways to join two or more sets in Python.
+
+#### Union (`union()` or `|`)
+Returns a new set with all items from both sets.
+
+```python
+# union()
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = set1.union(set2)
+print(set3)  # Output: {1, 2, 3, 'a', 'b', 'c'}
+
+# | operator
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = set1 | set2
+print(set3)  # Output: {1, 2, 3, 'a', 'b', 'c'}
+
+# Join multiple Sets
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set3 = {"John", "Elena"}
+set4 = {"apple", "bananas", "cherry"}
+myset = set1.union(set2, set3, set4)
+print(myset)  # Output: {1, 2, 3, 'bananas', 'cherry', 'a', 'b', 'c', 'apple', 'John', 'Elena'}
+
+# Join a set and a Tuple
+x = {"a", "b", "c"}
+y = (1, 2, 3)
+z = x.union(y)
+print(z)  # Output: {1, 2, 3, 'a', 'b', 'c'}
+```
+
+#### Update (`update()`)
+Inserts all items from one set into another (modifies original). Excludes duplicates.
+
+```python
+set1 = {"a", "b", "c"}
+set2 = {1, 2, 3}
+set1.update(set2)
+print(set1)  # Output: {1, 2, 3, 'a', 'b', 'c'}
+print(set2)  # Output: {1, 2, 3}
+```
+
+#### Intersection (`intersection()` or `&`)
+Returns a new set containing ONLY the duplicates.
+
+```python
+# intersection()
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set3 = set1.intersection(set2)
+print(set3)  # Output: {'apple'}
+
+# & operator
+set3 = set1 & set2
+print(set3)  # Output: {'apple'}
+
+# intersection_update() - Modifies the original set
+set1.intersection_update(set2)
+print(set1)  # Output: {'apple'}
+```
+
+#### Difference (`difference()` or `-`)
+Returns a new set containing items that only exist in the first set.
+
+```python
+# difference()
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set3 = set1.difference(set2)
+print(set3)  # Output: {'banana', 'cherry'}
+
+# - operator
+# Note: The - operator only allows you to join sets with sets
+set3 = set1 - set2
+print(set3)  # Output: {'banana', 'cherry'}
+```
+
+#### Symmetric Difference (`symmetric_difference()` or `^`)
+Returns a new set containing items that are NOT present in both sets.
+
+```python
+# symmetric_difference()
+set1 = {"apple", "banana", "cherry"}
+set2 = {"google", "microsoft", "apple"}
+set3 = set1.symmetric_difference(set2)
+print(set3)  # Output: {'banana', 'cherry', 'google', 'microsoft'}
+```
+
+---
+
+### Set Methods
+
+| Method | Operator | Description |
+|---|---|---|
+| `add()` | | Adds an element to the set |
+| `clear()` | | Removes all the elements from the set |
+| `copy()` | | Returns a copy of the set |
+| `difference()` | `-` | Returns a set containing the difference between two or more sets |
+| `difference_update()` | `-=` | Removes the items in this set that are also included in another, specified set |
+| `discard()` | | Remove the specified item |
+| `intersection()` | `&` | Returns a set, that is the intersection of two other sets |
+| `intersection_update()` | `&=` | Removes the items in this set that are not present in other, specified set(s) |
+| `isdisjoint()` | | Returns True if NO items of this set is present in another set |
+| `issubset()` | `<=` | Returns True if all items of this set is present in another set |
+| | `<` | Returns True if all items of this set is present in another, larger set |
+| `issuperset()` | `>=` | Returns True if all items of another set is present in this set |
+| | `>` | Returns True if all items of another, smaller set is present in this set |
+| `pop()` | | Removes an element from the set |
+| `remove()` | | Removes the specified element |
+| `symmetric_difference()` | `^` | Returns a set with the symmetric differences of two sets |
+| `symmetric_difference_update()` | `^=` | Inserts the symmetric differences from this set and another |
+| `union()` | `\|` | Return a set containing the union of sets |
+| `update()` | `\|=` | Update the set with the union of this set and others |
+
+#### 1. `add()`
+```python
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange")
+print(thisset)  # Output: {'banana', 'orange', 'apple', 'cherry'}
+```
+
+#### 2. `clear()`
+```python
+thisset = {"apple", "banana", "cherry"}
+thisset.clear()
+print(thisset)  # Output: set()
+```
+
+#### 3. `copy()`
+```python
+thisset = {"apple", "banana", "cherry"}
+x = thisset.copy()
+print(x)  # Output: {'banana', 'apple', 'cherry'}
+```
+
+#### 4. `difference()` or `-`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+z = x.difference(y)
+print(z)  # Output: {'banana', 'cherry'}
+```
+
+#### 5. `difference_update()` or `-=`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+x.difference_update(y)
+print(x)  # Output: {'banana', 'cherry'}
+```
+
+#### 6. `discard()`
+```python
+thisset = {"apple", "banana", "cherry"}
+thisset.discard("banana")
+print(thisset)  # Output: {'apple', 'cherry'}
+```
+
+#### 7. `intersection()` or `&`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+z = x.intersection(y)
+print(z)  # Output: {'apple'}
+```
+
+#### 8. `intersection_update()` or `&=`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+x.intersection_update(y)
+print(x)  # Output: {'apple'}
+```
+
+#### 9. `isdisjoint()`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "facebook"}
+z = x.isdisjoint(y)
+print(z)  # Output: True
+```
+
+#### 10. `issubset()` or `<=`
+```python
+x = {"a", "b", "c"}
+y = {"f", "e", "d", "c", "b", "a"}
+z = x.issubset(y)
+print(z)  # Output: True
+```
+
+#### 11. `issuperset()` or `>=`
+```python
+x = {"f", "e", "d", "c", "b", "a"}
+y = {"a", "b", "c"}
+z = x.issuperset(y)
+print(z)  # Output: True
+```
+
+#### 12. `pop()`
+```python
+thisset = {"apple", "banana", "cherry"}
+x = thisset.pop()
+print(x)         # Output: 'cherry' (or any random item)
+print(thisset)   # Output: {'apple', 'banana'}
+```
+
+#### 13. `remove()`
+```python
+thisset = {"apple", "banana", "cherry"}
+thisset.remove("banana")
+print(thisset)  # Output: {'apple', 'cherry'}
+```
+
+#### 14. `symmetric_difference()` or `^`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+z = x.symmetric_difference(y)
+print(z)  # Output: {'banana', 'cherry', 'google', 'microsoft'}
+```
+
+#### 15. `symmetric_difference_update()` or `^=`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+x.symmetric_difference_update(y)
+print(x)  # Output: {'banana', 'cherry', 'google', 'microsoft'}
+```
+
+#### 16. `union()` or `|`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+z = x.union(y)
+print(z)  # Output: {'banana', 'cherry', 'google', 'microsoft', 'apple'}
+```
+
+#### 17. `update()` or `|=`
+```python
+x = {"apple", "banana", "cherry"}
+y = {"google", "microsoft", "apple"}
+x.update(y)
+print(x)  # Output: {'banana', 'cherry', 'google', 'microsoft', 'apple'}
+```
+
+---
+
+### Frozenset
+
+A `frozenset` is an **immutable** version of a set.
+
+```python
+x = frozenset({"apple", "banana", "cherry"})
+print(x)        # Output: frozenset({'cherry', 'apple', 'banana'})
+print(type(x))  # Output: <class 'frozenset'>
+```
+
+#### Frozenset Methods
+
+| Method | Operator | Description |
+|---|---|---|
+| `copy()` | | Returns a shallow copy |
+| `difference()` | `-` | Returns a new frozenset with the difference |
+| `intersection()` | `&` | Returns a new frozenset with the intersection |
+| `isdisjoint()` | | Returns True if there is NO intersection between two frozensets |
+| `issubset()` | `<= / <` | Returns True if this frozenset is a (proper) subset of another |
+| `issuperset()` | `>= / >` | Returns True if this frozenset is a (proper) superset of another |
+| `symmetric_difference()`| `^` | Returns a new frozenset with the symmetric differences |
+| `union()` | `\|` | Returns a new frozenset containing the union |
+
+
+#### 1. `copy()`
+```python
+x = frozenset({"apple", "banana", "cherry"})
+y = x.copy()
+print(y)  # Output: frozenset({'cherry', 'apple', 'banana'})
+```
+
+#### 2. `difference()` or `-`
+```python
+x = frozenset({"apple", "banana", "cherry"})
+y = frozenset({"google", "microsoft", "apple"})
+z = x.difference(y)
+print(z)  # Output: frozenset({'banana', 'cherry'})
+```
+
+#### 3. `intersection()` or `&`
+```python
+x = frozenset({"apple", "banana", "cherry"})
+y = frozenset({"google", "microsoft", "apple"})
+z = x.intersection(y)
+print(z)  # Output: frozenset({'apple'})
+```
+
+#### 4. `isdisjoint()`
+```python
+x = frozenset({"apple", "banana", "cherry"})
+y = frozenset({"google", "microsoft", "facebook"})
+z = x.isdisjoint(y)
+print(z)  # Output: True
+```
+
+#### 5. `issubset()` or `<=`
+```python
+x = frozenset({"a", "b", "c"})
+y = frozenset({"f", "e", "d", "c", "b", "a"})
+z = x.issubset(y)
+print(z)  # Output: True
+```
+
+#### 6. `issuperset()` or `>=`
+```python
+x = frozenset({"f", "e", "d", "c", "b", "a"})
+y = frozenset({"a", "b", "c"})
+z = x.issuperset(y)
+print(z)  # Output: True
+```
+
+#### 7. `symmetric_difference()` or `^`
+```python
+x = frozenset({"apple", "banana", "cherry"})
+y = frozenset({"google", "microsoft", "apple"})
+z = x.symmetric_difference(y)
+print(z)  # Output: frozenset({'banana', 'cherry', 'google', 'microsoft'})
+```
+
+#### 8. `union()` or `|`
+```python
+x = frozenset({"apple", "banana", "cherry"})
+y = frozenset({"google", "microsoft", "apple"})
+z = x.union(y)
+print(z)  # Output: frozenset({'banana', 'cherry', 'google', 'microsoft', 'apple'})
+```
+
+---
+
+## Dictionaries
+
+Dictionaries are used to store data values in **key:value** pairs.
+As of Python 3.7, dictionaries are **ordered**. In Python 3.6 and earlier, dictionaries are **unordered**.
+
+| Property | Detail |
+|---|---|
+| **Ordered** | Items have a defined order and that order will not change. |
+| **Changeable** | We can change, add or remove items after the dictionary has been created. |
+| **No Duplicates** | Dictionaries cannot have two items with the same key. |
+
+```python
+# Dictionary
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+
+# Dictionary Items
+print(thisdict["brand"])  # Output: Ford
+
+# Duplicates Not Allowed (Overwrites existing key)
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964,
+  "year": 2020
+}
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 2020}
+
+# Length
+print(len(thisdict))  # Output: 3
+
+# Data types
+thisdict = {
+  "brand": "Ford",
+  "electric": False,
+  "year": 1964,
+  "colors": ["red", "white", "blue"]
+}
+print(thisdict)  # Output: {'brand': 'Ford', 'electric': False, 'year': 1964, 'colors': ['red', 'white', 'blue']}
+
+# type()
+print(type(thisdict))  # Output: <class 'dict'>
+
+# The dict() Constructor
+thisdict = dict(name="John", age=36, country="Norway")
+print(thisdict)  # Output: {'name': 'John', 'age': 36, 'country': 'Norway'}
+```
+
+---
+
+### Access Dictionary Items
+
+```python
+# Accessing items
+thisdict = dict(name="Md Rijoan Maruf", age=36, country="Norway")
+print(thisdict)  # Output: {'name': 'Md Rijoan Maruf', 'age': 36, 'country': 'Norway'}
+
+# get()
+x = thisdict.get("name")
+print(x)  # Output: Md Rijoan Maruf
+
+# Keys - keys()
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+x = car.keys()
+print(x) # Output: dict_keys(['brand', 'model', 'year']) (before the change)
+
+car["color"] = "white"
+print(x) # Output: dict_keys(['brand', 'model', 'year', 'color']) (after the change)
+
+# Get Values - values()
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+x = car.values()
+print(x) # Output: dict_values(['Ford', 'Mustang', 1964]) (before the change)
+
+car["year"] = 2020
+print(x) # Output: dict_values(['Ford', 'Mustang', 2020]) (after the change)
+
+# Get Items - items()
+car = {
+"brand": "Ford",
+"model": "Mustang",
+"year": 1964
+}
+x = car.items()
+print(x) # Output: dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 1964)]) (before the change)
+
+car["year"] = 2020
+print(x) # Output: dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 2020)]) (after the change)
+
+# Check if key exists
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+if "model" in thisdict:
+  print("Yes, 'model' is one of the keys in the thisdict dictionary")
+  # Output: Yes, 'model' is one of the keys in the thisdict dictionary
+```
+
+---
+
+### Change Dictionary Values
+
+```python
+# Change Values
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict["year"] = 2018
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 2018}
+
+# Update Dictionary - update()
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict.update({"year": 2020})
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 2020}
+```
+
+---
+
+### Add Dictionary Items
+
+```python
+# Adding items
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict["color"] = "red"
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'red'}
+
+# Update Dictionary
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict.update({"color": "red"})
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'red'}
+```
+
+---
+
+### Remove Dictionary Items
+
+```python
+# Removing Items
+
+# pop()
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict.pop("model")
+print(thisdict)  # Output: {'brand': 'Ford', 'year': 1964}
+
+# popitem() - removes the last inserted item (in versions before 3.7, a random item is removed instead)
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+thisdict.popitem()
+print(thisdict)  # Output: {'brand': 'Ford', 'model': 'Mustang'}
+
+# del
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+del thisdict["model"]
+print(thisdict)  # Output: {'brand': 'Ford', 'year': 1964}
+# The del keyword can also delete the dictionary completely (e.g. del thisdict).
+```
+
+---
+
+### Loop In Dictionary
+
+```python
+# Loop Through a Dictionary
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+for x in thisdict:
+  print(x)
+  # Output:
+  # brand
+  # model
+  # year
+
+# Loop in keys
+for x in thisdict.keys():
+  print(x)
+  # Output:
+  # brand
+  # model
+  # year
+
+# Loop in values
+for x in thisdict.values():
+  print(x)
+  # Output:
+  # Ford
+  # Mustang
+  # 1964
+```
+
+---
+
+### Copy Dictionary
+
+```python
+# copy()
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+mydict = thisdict.copy()
+print(mydict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+
+# dict()
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+mydict = dict(thisdict)
+print(mydict)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+```
+
+---
+
+### Nested Dictionaries
+
+```python
+# Nested
+myfamily = {
+  "child1" : {
+    "name" : "Emil",
+    "year" : 2004
+  },
+  "child2" : {
+    "name" : "Tobias",
+    "year" : 2007
+  },
+  "child3" : {
+    "name" : "Linus",
+    "year" : 2011
+  }
+}
+print(myfamily)
+# Output: {'child1': {'name': 'Emil', 'year': 2004}, 'child2': {'name': 'Tobias', 'year': 2007}, 'child3': {'name': 'Linus', 'year': 2011}}
+
+# Another Example
+child1 = {
+  "name" : "Emil",
+  "year" : 2004
+}
+child2 = {
+  "name" : "Tobias",
+  "year" : 2007
+}
+child3 = {
+  "name" : "Linus",
+  "year" : 2011
+}
+
+myfamily = {
+  "child1" : child1,
+  "child2" : child2,
+  "child3" : child3
+}
+print(myfamily)
+# Output: {'child1': {'name': 'Emil', 'year': 2004}, 'child2': {'name': 'Tobias', 'year': 2007}, 'child3': {'name': 'Linus', 'year': 2011}}
+
+# Access items in Nested
+print(myfamily["child2"]["name"])  # Output: Tobias
+
+# Loop in Nested 
+for x, obj in myfamily.items():
+  print(x)
+  for y in obj:
+    print(y + ':', obj[y])
+    
+# Output:
+# child1
+# name: Emil
+# year: 2004
+# child2
+# name: Tobias
+# year: 2007
+# child3
+# name: Linus
+# year: 2011
+```
+
+---
+
+### Dictionary Methods
+
+| Method | Description |
+|---|---|
+| `clear()` | Removes all the elements from the dictionary |
+| `copy()` | Returns a copy of the dictionary |
+| `fromkeys()` | Returns a dictionary with the specified keys and value |
+| `get()` | Returns the value of the specified key |
+| `items()` | Returns a list containing a tuple for each key value pair |
+| `keys()` | Returns a list containing the dictionary's keys |
+| `pop()` | Removes the element with the specified key |
+| `popitem()` | Removes the last inserted key-value pair |
+| `setdefault()` | Returns the value of the specified key. If the key does not exist: insert the key, with the specified value |
+| `update()` | Updates the dictionary with the specified key-value pairs |
+| `values()` | Returns a list of all the values in the dictionary |
+
+#### 1. `clear()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+car.clear()
+print(car)  # Output: {}
+```
+
+#### 2. `copy()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+x = car.copy()
+print(x)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+```
+
+#### 3. `fromkeys()`
+```python
+x = ('key1', 'key2', 'key3')
+y = 0
+thisdict = dict.fromkeys(x, y)
+print(thisdict)  # Output: {'key1': 0, 'key2': 0, 'key3': 0}
+```
+
+#### 4. `get()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+x = car.get("model")
+print(x)  # Output: Mustang
+```
+
+#### 5. `items()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+x = car.items()
+print(x)  # Output: dict_items([('brand', 'Ford'), ('model', 'Mustang'), ('year', 1964)])
+```
+
+#### 6. `keys()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+x = car.keys()
+print(x)  # Output: dict_keys(['brand', 'model', 'year'])
+```
+
+#### 7. `pop()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+car.pop("model")
+print(car)  # Output: {'brand': 'Ford', 'year': 1964}
+```
+
+#### 8. `popitem()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+car.popitem()
+print(car)  # Output: {'brand': 'Ford', 'model': 'Mustang'}
+```
+
+#### 9. `setdefault()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+x = car.setdefault("color", "white")
+print(x)    # Output: white
+print(car)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'white'}
+```
+
+#### 10. `update()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+car.update({"color": "White"})
+print(car)  # Output: {'brand': 'Ford', 'model': 'Mustang', 'year': 1964, 'color': 'White'}
+```
+
+#### 11. `values()`
+```python
+car = {"brand": "Ford", "model": "Mustang", "year": 1964}
+x = car.values()
+print(x)  # Output: dict_values(['Ford', 'Mustang', 1964])
+```
+
+---
+
+## Conditional Statements
+
+Python supports the usual logical conditions from mathematics:
+* Equals: `a == b`
+* Not Equals: `a != b`
+* Less than: `a < b`
+* Less than or equal to: `a <= b`
+* Greater than: `a > b`
+* Greater than or equal to: `a >= b`
+
+These conditions can be used in several ways, most commonly in `if` statements and loops.
+
+```python
+# Basic If, Elif, Else
+a = 200
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+else:
+  print("a is greater than b")
+  # Output: a is greater than b
+
+# More Examples
+temperature = 22
+
+if temperature > 30:
+  print("It's hot outside!")
+elif temperature > 20:
+  print("It's warm outside")
+elif temperature > 10:
+  print("It's cool outside")
+else:
+  print("It's cold outside!")
+  # Output: It's warm outside
+```
+
+#### Short Hand If / If...Else
+If you have only one statement to execute, you can put it on the same line as the if statement.
+
+```python
+a = 200
+b = 33
+
+# Short hand if
+if a > b: print("a is greater than b")
+
+# Short hand if...else (Ternary Operator)
+a = 2
+b = 330
+print("A") if a > b else print("B")  # Output: B
+
+# Multiple Conditions on One line
+a = 330
+b = 330
+print("A") if a > b else print("=") if a == b else print("B")  # Output: =
+```
+
+---
+
+### Logical Operators in Conditions
+
+Logical operators (`and`, `or`, `not`) are used to combine conditional statements.
+
+```python
+# And Operator
+a = 200
+b = 33
+c = 500
+if a > b and c > a:
+  print("Both conditions are True")  # Output: Both conditions are True
+
+# Or operator
+a = 200
+b = 33
+c = 500
+if a > b or a > c:
+  print("At least one of the conditions is True")  # Output: At least one of the conditions is True
+
+# Not operator
+a = 33
+b = 200
+if not a > b:
+  print("a is NOT greater than b")  # Output: a is NOT greater than b
+
+# Combining Multiple Operators
+age = 25
+is_student = False
+has_discount_code = True
+
+if (age < 18 or age > 65) and not is_student or has_discount_code:
+  print("Discount applies!")  # Output: Discount applies!
+```
+
+---
+
+### Nested If Else
+
+You can have `if` statements inside `if` statements, this is called *nested* `if` statements.
+
+```python
+score = 85
+attendance = 90
+submitted = True
+
+if score >= 60:
+  if attendance >= 80:
+    if submitted:
+      print("Pass with good standing")  # Output: Pass with good standing
+    else:
+      print("Pass but missing assignment")
+  else:
+    print("Pass but low attendance")
+else:
+  print("Fail")
+```
+
+---
+
+### The pass Statement
+
+`if` statements cannot be empty, but if you for some reason have an `if` statement with no content, put in the `pass` statement to avoid getting an error.
+
+```python
+a = 33
+b = 200
+
+if b > a:
+  pass
+
+# Example of using pass as a placeholder
+age = 20
+
+if age < 18:
+  pass # TODO: Add underage logic later
+else:
+  print("Access granted")  # Output: Access granted
+```
+
+---
+
+### Match Statement
+
+Starting in Python 3.10, the `match` statement evaluates an expression and compares its value to successive `case` blocks (similar to `switch` in other languages).
+
+```python
+# Match
+day = 4
+match day:
+  case 1:
+    print("Monday")
+  case 2:
+    print("Tuesday")
+  case 3:
+    print("Wednesday")
+  case 4:
+    print("Thursday")
+  case 5:
+    print("Friday")
+  case 6:
+    print("Saturday")
+  case 7:
+    print("Sunday")
+# Output: Thursday
+
+# With Default Value (case _)
+day = 4
+match day:
+  case 6:
+    print("Today is Saturday")
+  case 7:
+    print("Today is Sunday")
+  case _:
+    print("Looking forward to the Weekend")
+# Output: Looking forward to the Weekend
+
+# Combine Values (using |)
+day = 4
+match day:
+  case 1 | 2 | 3 | 4 | 5:
+    print("Today is a weekday")
+  case 6 | 7:
+    print("I love weekends!")
+# Output: Today is a weekday
+```
+
+---
+
+---
+
+## Loops
+
+Python has two primitive loop commands:
+* `while` loops
+* `for` loops
+
+### While Loop
+
+With the `while` loop we can execute a set of statements as long as a condition is true.
+
+```python
+# while loop
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5
+```
+
+#### The break Statement
+With the `break` statement we can stop the loop even if the while condition is true.
+
+```python
+# Break Statement
+i = 1
+while i < 6:
+  print(i)
+  if i == 3:
+    break
+  i += 1
+# Output:
+# 1
+# 2
+# 3
+```
+
+#### The continue Statement
+With the `continue` statement we can stop the current iteration, and continue with the next.
+
+```python
+# Continue Statement
+i = 0
+while i < 6:
+  i += 1
+  if i == 3:
+    continue
+  print(i)
+# Output:
+# 1
+# 2
+# 4
+# 5
+# 6
+```
+
+#### The else Statement
+With the `else` statement we can run a block of code once when the condition no longer is true.
+
+```python
+# Else Statement
+i = 1
+while i < 6:
+  print(i)
+  i += 1
+else:
+  print("i is no longer less than 6")
+# Output:
+# 1
+# 2
+# 3
+# 4
+# 5
+# i is no longer less than 6
+```
+
+---
+
+### For Loop
+
+A `for` loop is used for iterating over a sequence (that is either a list, a tuple, a dictionary, a set, or a string).
+
+```python
+# For Loop
+fruits = ["apple", "banana", "cherry"]
+for x in fruits:
+  print(x)
+# Output:
+# apple
+# banana
+# cherry
+```
+
+#### The range() Function
+To loop through a set of code a specified number of times, we can use the `range()` function.
+
+```python
+# Range
+for x in range(6):
+  print(x)
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+```
+
+#### Nested Loops
+A nested loop is a loop inside a loop. The "inner loop" will be executed one time for each iteration of the "outer loop".
+
+```python
+# Nested For Loop
+adj = ["red", "big", "tasty"]
+fruits = ["apple", "banana", "cherry"]
+
+for x in adj:
+  for y in fruits:
+    print(x, y)
+# Output:
+# red apple
+# red banana
+# red cherry
+# big apple
+# big banana
+# big cherry
+# tasty apple
+# tasty banana
+# tasty cherry
+```
+
+---
+
+---
+
+## Functions
+
+A function is a block of code which only runs when it is called. You can pass data, known as parameters, into a function.
+
+```python
+# Creating a Function
+def my_function():
+  print("Hello from a function")
+
+# Calling a Function
+my_function()  # Output: Hello from a function
+
+# Return values
+def get_greeting():
+  return "Hello from a function"
+
+message = get_greeting()
+print(message)  # Output: Hello from a function
+
+# The pass Statement
+# Function definitions cannot be empty. If you need to create a function placeholder without any code, use the pass statement:
+def my_function():
+  pass
+```
+
+> **Function Naming Rules:**
+> - Must start with a letter or underscore (`_`).
+> - Can only contain letters, numbers, and underscores.
+> - Case-sensitive (`myFunction` and `myfunction` are different).
+
+---
+
+### Function Arguments
+
+A **parameter** is the variable listed inside the parentheses in the function definition.
+An **argument** is the actual value that is sent to the function when it is called.
+
+```python
+# Arguments
+def my_function(fname):
+  print("Hello ,", fname)
+
+my_function("Rijoan")  # Output: Hello , Rijoan
+my_function("Maruf")   # Output: Hello , Maruf
+
+# Default Parameter
+def my_function(name="friend"):
+  print("Hello", name)
+
+my_function("Rijoan")  # Output: Hello Rijoan
+my_function()          # Output: Hello friend
+
+# Keyword Arguments
+def my_function(animal, name):
+  print("I have a", animal)
+  print("My", animal + "'s name is", name)
+
+my_function(animal="dog", name="Buddy")
+# Output:
+# I have a dog
+# My dog's name is Buddy
+
+# Mixing Positional and Keyword Arguments
+# Positional arguments must come before keyword arguments:
+def my_function(animal, name, age):
+  print("I have a", age, "year old", animal, "named", name)
+
+my_function("dog", name="Buddy", age=5)
+# Output: I have a 5 year old dog named Buddy
+
+# Returning Different Data Types
+def my_function():
+  return (10, 20)
+
+x, y = my_function()
+print("x:", x)  # Output: x: 10
+print("y:", y)  # Output: y: 20
+```
+
+#### `*args` (Arbitrary Arguments)
+Accepts any number of positional arguments as a tuple.
+
+```python
+def my_function(*kids):
+  print("The youngest child is " + kids[2])
+
+my_function("Emil", "Tobias", "Linus")  # Output: The youngest child is Linus
+
+# Practical Example
+def my_function(*numbers):
+  total = 0
+  for num in numbers:
+    total += num
+  return total
+
+print(my_function(1, 2, 3))         # Output: 6
+print(my_function(10, 20, 30, 40))  # Output: 100
+```
+
+#### `**kwargs` (Arbitrary Keyword Arguments)
+Accepts any number of keyword arguments as a dictionary.
+
+```python
+def my_function(**myvar):
+  print("Name:", myvar["name"])
+  print("Age:", myvar["age"])
+  print("All data:", myvar)
+
+my_function(name="Tobias", age=30, city="Bergen")
+# Output:
+# Name: Tobias
+# Age: 30
+# All data: {'name': 'Tobias', 'age': 30, 'city': 'Bergen'}
+
+# Combining *args and **kwargs
+def my_function(title, *args, **kwargs):
+  print("Title:", title)
+  print("Positional arguments:", args)
+  print("Keyword arguments:", kwargs)
+
+my_function("User Info", "Emil", "Tobias", age=25, city="Oslo")
+# Output:
+# Title: User Info
+# Positional arguments: ('Emil', 'Tobias')
+# Keyword arguments: {'age': 25, 'city': 'Oslo'}
+```
+
+#### Unpacking Arguments
+You can unpack lists with `*` and dictionaries with `**` when calling a function.
+
+```python
+# Lists with *
+def my_function(a, b, c):
+  return a + b + c
+
+numbers = [1, 2, 3]
+result = my_function(*numbers)  # Same as: my_function(1, 2, 3)
+print(result)  # Output: 6
+
+# Dictionaries with **
+def my_function(fname, lname):
+  print("Hello", fname, lname)
+
+person = {"fname": "Emil", "lname": "Rijoan"}
+my_function(**person)  # Output: Hello Emil Rijoan
+```
+
+---
+
+### Lambda Functions
+
+A lambda function is a small **anonymous** function. It can take any number of arguments, but can only have **one expression**.
+
+```python
+x = lambda a : a + 10
+print(x(5))  # Output: 15
+
+# map(): Applies a function to every item in an iterable
+numbers = [1, 2, 3, 4, 5]
+doubled = list(map(lambda x: x * 2, numbers))
+print(doubled)  # Output: [2, 4, 6, 8, 10]
+
+# filter(): Creates a list of items for which a function returns True
+numbers = [1, 2, 3, 4, 5, 6, 7, 8]
+odd_numbers = list(filter(lambda x: x % 2 != 0, numbers))
+print(odd_numbers)  # Output: [1, 3, 5, 7]
+
+# sorted(): Can use a lambda as a key for custom sorting
+students = [("Emil", 25), ("Tobias", 22), ("Linus", 28)]
+sorted_students = sorted(students, key=lambda x: x[1])
+print(sorted_students)  # Output: [('Tobias', 22), ('Emil', 25), ('Linus', 28)]
+```
+
+---
+
+### Scope
+
+A variable is only available from inside the region it is created. This is called **scope**. Python follows the **LEGB rule** when looking up variable names:
+1. **Local** - Inside the current function
+2. **Enclosing** - Inside enclosing functions (from inner to outer)
+3. **Global** - At the top level of the module
+4. **Built-in** - In Python's built-in namespace
+
+```python
+# Local Scope
+def myfunc():
+  x = 300
+  print(x)
+
+myfunc()  # Output: 300
+
+# Global Scope
+x = 300
+def myfunc():
+  print(x)
+
+myfunc()  # Output: 300
+print(x)  # Output: 300
+
+# Global keyword (Modifying a global variable inside a function)
+def myfunc():
+  global x
+  x = 300
+
+myfunc()
+print(x)  # Output: 300
+
+# Nonlocal Keyword (Modifying an enclosing variable)
+def myfunc1():
+  x = "Rijoan"
+  def myfunc2():
+    nonlocal x
+    x = "hello"
+  myfunc2()
+  return x
+
+print(myfunc1())  # Output: hello
+```
+
+---
+
+### Recursion
+
+Recursion is when a function calls itself. Every recursive function must have two parts:
+1. **A base case** - A condition that stops the recursion.
+2. **A recursive case** - The function calling itself with a modified argument.
+
+```python
+# Example 1: Countdown
+def countdown(n):
+  if n <= 0:
+    print("Done!")
+  else:
+    print(n)
+    countdown(n - 1)
+
+countdown(3)
+# Output:
+# 3
+# 2
+# 1
+# Done!
+
+# Example 2: Factorial
+def factorial(n):
+  if n == 0 or n == 1:
+    return 1  # Base case
+  else:
+    return n * factorial(n - 1)  # Recursive case
+
+print(factorial(5))  # Output: 120
+
+# Example 3: Fibonacci Sequence
+def fibonacci(n):
+  if n <= 1:
+    return n
+  else:
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(7))  # Output: 13
+
+# Example 4: Recursion with Lists
+def sum_list(numbers):
+  if len(numbers) == 0:
+    return 0
+  else:
+    return numbers[0] + sum_list(numbers[1:])
+
+my_list = [1, 2, 3, 4, 5]
+print(sum_list(my_list))  # Output: 15
+```
+
+---
+
+### Decorators
+
+Decorators let you add extra behavior to a function without changing the function's code.
+
+```python
+# Basic Decorator
+def changecase(func):
+  def myinner():
+    return func().upper()
+  return myinner
+
+@changecase
+def myfunction():
+  return "Hello Sally"
+
+print(myfunction())  # Output: HELLO SALLY
+
+# Multiple Decorator Calls
+@changecase
+def otherfunction():
+  return "I am speed!"
+
+print(otherfunction())  # Output: I AM SPEED!
+
+# Arguments in the Decorated Function
+def changecase_with_args(func):
+  def myinner(x):
+    return func(x).upper()
+  return myinner
+
+@changecase_with_args
+def greet(name):
+  return "Hello " + name
+
+print(greet("John"))  # Output: HELLO JOHN
+
+# Decorator with arguments
+def changecase_choice(n):
+  def decorator(func):
+    def myinner():
+      if n == 1:
+        return func().lower()
+      else:
+        return func().upper()
+    return myinner
+  return decorator
+
+@changecase_choice(1)
+def myfunction2():
+  return "Hello Linus"
+
+print(myfunction2())  # Output: hello linus
+```
+
+---
+
+## Range
+
+The built-in `range()` function returns an **immutable** sequence of numbers, commonly used for looping a specific number of times. (Immutable means that it cannot be modified after it is created).
+
+### Usage
+
+```python
+# Call range() With One Argument
+x = range(10)
+print(x)         # Output: range(0, 10)
+print(list(x))   # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Call range() With Two Arguments (start, stop)
+x = range(3, 10)
+print(x)         # Output: range(3, 10)
+print(list(x))   # Output: [3, 4, 5, 6, 7, 8, 9]
+
+# Call range() with Three Arguments (start, stop, step)
+x = range(3, 10, 2)
+print(x)         # Output: range(3, 10, 2)
+print(list(x))   # Output: [3, 5, 7, 9]
+```
+
+### Length
+
+```python
+# Length
+r = range(0, 10, 2)
+print(len(r))  # Output: 5
+```
+
+### For loop using `range()`
+
+```python
+# For loop using range()
+for i in range(10):
+  print(i)
+# Output:
+# 0
+# 1
+# 2
+# 3
+# 4
+# 5
+# 6
+# 7
+# 8
+# 9
+```
+
+---
+
+## Modules
+
+Consider a module to be the same as a code library: a file containing a set of functions or variables you want to include in your application.
+
+### Creating a Module
+
+To create a module, save the code you want in a file with the file extension `.py`. For example, `Module.py`:
+
+```python
+# Module.py
+def greeting(name):
+  print("Hello, " + name)
+
+person1 = {
+  "name": "Rijoan Maruf",
+  "age": 24,
+  "country": "Bangladesh"
+}
+```
+
+### Using a Module
+
+You can use the module we just created by using the `import` statement.
+
+```python
+import Module
+
+# Use a function from the module
+Module.greeting("Rijoan")  # Output: Hello, Rijoan
+
+# Use a variable from the module
+a = Module.person1["age"]
+print(a)  # Output: 24
+```
+
+### Re-naming a Module
+
+You can create an alias when you import a module by using the `as` keyword:
+
+```python
+import Module as mx
+
+a = mx.person1["age"]
+print(a)  # Output: 24
+```
+
+### Import From Module
+
+You can choose to import only parts from a module using the `from` keyword.
+*(Note: When importing using the `from` keyword, do not use the module name when referring to elements in the module.)*
+
+```python
+from Module import person1
+
+print(person1["age"])  # Output: 24
+```
+
+### Built-in Modules
+
+Python comes with several built-in modules that you can import whenever you like.
+
+```python
+import platform
+
+x = platform.system()
+print(x)  # Output: Windows (or Linux/Darwin)
+```
+
+#### The dir() Function
+There is a built-in function to list all the function names (or variable names) in a module. The `dir()` function can be used on all modules, including the ones you create yourself.
+
+```python
+import platform
+
+x = dir(platform)
+print(x)  # Output: ['_Processor', '_WIN32_CLIENT_RELEASES', '_WIN32_SERVER_RELEASES', ... ]
+```
+
+---
+
+## Datetime
+
+A date in Python is not a data type of its own, but we can import a module named `datetime` to work with dates as date objects.
+
+### Dates
+
+When we execute the code to get the current date, the result contains the year, month, day, hour, minute, second, and microsecond.
+
+```python
+import datetime
+
+# Get the current date and time
+x = datetime.datetime.now()
+print(x)
+# Output: 2024-10-03 15:14:38.256000 (Example)
+
+# Return the year and name of weekday
+x = datetime.datetime.now()
+print(x.year)  # Output: 2024 (Example)
+print(x.strftime("%A"))  # Output: Thursday (Example)
+```
+
+### Creating Date Objects
+
+To create a date, we can use the `datetime()` class (constructor) of the `datetime` module.
+The `datetime()` class requires three parameters to create a date: year, month, day.
+
+```python
+import datetime
+
+x = datetime.datetime(2020, 5, 17)
+print(x)
+# Output: 2020-05-17 00:00:00
+```
+
+### The strftime() Method
+
+The `datetime` object has a method for formatting date objects into readable strings. The method is called `strftime()`, and takes one parameter, `format`, to specify the format of the returned string.
+
+```python
+import datetime
+
+x = datetime.datetime(2018, 6, 1)
+
+# Display the name of the month
+print(x.strftime("%B"))  # Output: June
+```
+
+#### Reference of Formatting Codes:
+
+| Directive | Description | Example |
+|---|---|---|
+| `%a` | Weekday, short version | Wed |
+| `%A` | Weekday, full version | Wednesday |
+| `%w` | Weekday as a number 0-6, 0 is Sunday | 3 |
+| `%d` | Day of month 01-31 | 31 |
+| `%b` | Month name, short version | Dec |
+| `%B` | Month name, full version | December |
+| `%m` | Month as a number 01-12 | 12 |
+| `%y` | Year, short version, without century | 18 |
+| `%Y` | Year, full version | 2018 |
+| `%H` | Hour 00-23 | 17 |
+| `%I` | Hour 00-12 | 05 |
+| `%p` | AM/PM | PM |
+| `%M` | Minute 00-59 | 41 |
+| `%S` | Second 00-59 | 08 |
+| `%f` | Microsecond 000000-999999 | 548513 |
+| `%z` | UTC offset | +0100 |
+| `%Z` | Timezone | CST |
+| `%j` | Day number of year 001-366 | 365 |
+| `%U` | Week number of year, Sunday as the first day of week, 00-53 | 52 |
+| `%W` | Week number of year, Monday as the first day of week, 00-53 | 52 |
+| `%c` | Local version of date and time | Mon Dec 31 17:41:00 2018 |
+| `%C` | Century | 20 |
+| `%x` | Local version of date | 12/31/18 |
+| `%X` | Local version of time | 17:41:00 |
+| `%%` | A % character | % |
+| `%G` | ISO 8601 year | 2018 |
+| `%u` | ISO 8601 weekday (1-7) | 1 |
+| `%V` | ISO 8601 weeknumber (01-53) | 01 |
+
+---
+
+## Math
+
+Python has a set of built-in math functions, including an extensive `math` module, that allows you to perform mathematical tasks on numbers.
+
+### Built-in Math Functions
+
+You can use built-in functions like `min()`, `max()`, `abs()`, and `pow()` without importing any modules.
+
+```python
+# min() and max()
+x = min(5, 10, 25)
+y = max(5, 10, 25)
+
+print(x)  # Output: 5
+print(y)  # Output: 25
+
+# abs(): Returns the absolute (positive) value of the specified number
+x = abs(-7.25)
+print(x)  # Output: 7.25
+
+# pow(x, y): Returns the value of x to the power of y (x^y)
+x = pow(4, 3)
+print(x)  # Output: 64
+```
+
+### The Math Module
+
+Python has also a built-in module called `math`, which extends the list of mathematical functions.
+To use it, you must `import math`.
+
+```python
+import math
+
+# math.sqrt(): Returns the square root of a number
+x = math.sqrt(64)
+print(x)  # Output: 8.0
+
+# math.ceil() and math.floor()
+x = math.ceil(1.4)   # Rounds a number UP to the nearest integer
+y = math.floor(1.4)  # Rounds a number DOWN to the nearest integer
+
+print(x)  # Output: 2
+print(y)  # Output: 1
+
+# math.pi: Returns the value of PI (3.14...)
+x = math.pi
+print(x)  # Output: 3.141592653589793
+```
+
+---
+
+## JSON
+
+JSON is a syntax for storing and exchanging data. JSON is text, written with JavaScript object notation.
+Python has a built-in package called `json`, which can be used to work with JSON data.
+
+```python
+import json
+```
+
+### Parse JSON (Convert from JSON to Python)
+
+If you have a JSON string, you can parse it by using the `json.loads()` method. The result will be a Python dictionary.
+
+```python
+import json
+
+# Some JSON string
+x = '{"name":"Rijoan Maruf", "age":24, "city":"Dhaka"}'
+
+# Parse x
+y = json.loads(x)
+
+# The result is a Python dictionary
+print(y["age"])  # Output: 24
+```
+
+### Convert from Python to JSON
+
+If you have a Python object, you can convert it into a JSON string by using the `json.dumps()` method.
+
+```python
+import json
+
+# A Python object (dict)
+x = {
+  "name": "Rijoan Maruf",
+  "age": 24,
+  "city": "Dhaka"
+}
+
+# Convert into JSON string
+y = json.dumps(x)
+
+# The result is a JSON string
+print(y)  # Output: {"name": "Rijoan Maruf", "age": 24, "city": "Dhaka"}
+```
+
+You can convert Python objects of the following types into JSON strings: `dict`, `list`, `tuple`, `string`, `int`, `float`, `True`, `False`, `None`.
+
+### Format the Result
+
+The `json.dumps()` method has parameters to make it easier to read the result.
+
+```python
+import json
+
+x = {
+  "name": "Rijoan Maruf",
+  "age": 24,
+  "married": True,
+  "divorced": False,
+  "children": ("Ann","Billy"),
+  "pets": None,
+  "cars": [
+    {"model": "BMW 230", "mpg": 27.5},
+    {"model": "Ford Edge", "mpg": 24.1}
+  ]
+}
+
+# Use the indent parameter to define the numbers of indents
+print(json.dumps(x, indent=4))
+# Output:
+# {
+#     "name": "Rijoan Maruf",
+#     "age": 24,
+#     "married": true,
+#     "divorced": false,
+#     "children": [
+#         "Ann",
+#         "Billy"
+#     ],
+#     "pets": null,
+#     "cars": [
+#         {
+#             "model": "BMW 230",
+#             "mpg": 27.5
+#         },
+#         {
+#             "model": "Ford Edge",
+#             "mpg": 24.1
+#         }
+#     ]
+# }
+
+# Use the separators parameter to change the default separator
+# The default is (", ", ": "), which means a comma and a space, and a colon and a space.
+print(json.dumps(x, indent=4, separators=(". ", " = ")))
+
+# Use the sort_keys parameter to specify if the result should be sorted or not
+print(json.dumps(x, indent=4, sort_keys=True))
+```
+
+---
+
+## RegEx
+
+A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
+RegEx can be used to check if a string contains the specified search pattern.
+Python has a built-in package called `re`, which can be used to work with Regular Expressions.
+
+```python
+import re
+
+# Search the string to see if it starts with "The" and ends with "Spain":
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)
+
+if x:
+  print("YES! We have a match!")
+else:
+  print("No match")
+# Output: YES! We have a match!
+```
+
+### The `re` Functions
+
+The `re` module offers a set of functions that allows us to search a string for a match:
+
+| Function | Description |
+|---|---|
+| `findall()` | Returns a list containing all matches |
+| `search()` | Returns a Match object if there is a match anywhere in the string |
+| `split()` | Returns a list where the string has been split at each match |
+| `sub()` | Replaces one or many matches with a string |
+
+#### 1. The findall() Function
+The `findall()` function returns a list containing all matches.
+
+```python
+import re
+
+txt = "The rain in Spain"
+x = re.findall("ai", txt)
+print(x)  # Output: ['ai', 'ai']
+
+# If no matches are found, an empty list is returned:
+y = re.findall("Portugal", txt)
+print(y)  # Output: []
+```
+
+#### 2. The search() Function
+The `search()` function searches the string for a match, and returns a Match object if there is a match. If there is more than one match, only the first occurrence of the match will be returned.
+
+```python
+import re
+
+txt = "The rain in Spain"
+x = re.search("\s", txt)
+
+print("The first white-space character is located in position:", x.start()) 
+# Output: The first white-space character is located in position: 3
+```
+
+#### 3. The split() Function
+The `split()` function returns a list where the string has been split at each match.
+
+```python
+import re
+
+txt = "The rain in Spain"
+# Split at each white-space character:
+x = re.split("\s", txt)
+print(x)  # Output: ['The', 'rain', 'in', 'Spain']
+
+# You can control the number of occurrences by specifying the maxsplit parameter:
+y = re.split("\s", txt, 1)
+print(y)  # Output: ['The', 'rain in Spain']
+```
+
+#### 4. The sub() Function
+The `sub()` function replaces the matches with the text of your choice.
+
+```python
+import re
+
+txt = "The rain in Spain"
+# Replace every white-space character with the number 9:
+x = re.sub("\s", "9", txt)
+print(x)  # Output: The9rain9in9Spain
+```
+
+### Match Object
+
+A Match Object is an object containing information about the search and the result.
+If there is no match, the value `None` will be returned, instead of the Match Object.
+
+The Match object has properties and methods used to retrieve information about the search, and the result:
+* `.span()`: returns a tuple containing the start-, and end positions of the match.
+* `.string`: returns the string passed into the function
+* `.group()`: returns the part of the string where there was a match
+
+```python
+import re
+
+txt = "The rain in Spain"
+x = re.search(r"\bS\w+", txt)
+
+print(x.span())    # Output: (12, 17)
+print(x.string)    # Output: The rain in Spain
+print(x.group())   # Output: Spain
+```
+
+---
+
+## PIP
+
+PIP is a package manager for Python packages, or modules if you like.
+
+> **Note:** If you have Python version 3.4 or later, PIP is included by default.
+
+### What is a Package?
+A package contains all the files you need for a module. Modules are Python code libraries you can include in your project.
+
+### Check if PIP is Installed
+
+Navigate your command line to the location of Python's script directory, and type the following:
+
+```bash
+pip --version
+```
+
+### Download a Package
+
+Downloading a package is very easy. Open the command line interface and tell PIP to download the package you want.
+
+```bash
+# Download a package named "camelcase"
+pip install camelcase
+```
+
+### Using a Package
+
+Once the package is installed, it is ready to use. Import the "camelcase" package into your project.
+
+```python
+import camelcase
+
+c = camelcase.CamelCase()
+txt = "hello world"
+
+print(c.hump(txt))  
+# Output: Hello World
+```
+
+### Find Packages
+
+Find more packages at the Python Package Index (PyPI): [https://pypi.org/](https://pypi.org/).
+
+### Remove a Package
+
+Use the `uninstall` command to remove a package:
+
+```bash
+pip uninstall camelcase
+```
+
+*(PIP will ask you to confirm if you want to remove the package. Press `y` and `ENTER` to confirm)*
+
+### List Packages
+
+Use the `list` command to find all the packages installed on your system:
+
+```bash
+pip list
+```
+
+---
+
+## Try Except
+
+The `try` block lets you test a block of code for errors.
+The `except` block lets you handle the error.
+The `else` block lets you execute code when there is no error.
+The `finally` block lets you execute code, regardless of the result of the try- and except blocks.
+
+### Exception Handling
+When an error occurs, or exception as we call it, Python will normally stop and generate an error message.
+These exceptions can be handled using the `try` statement:
+
+```python
+# The try block will generate an exception, because x is not defined:
+try:
+  print(x)
+except:
+  print("An exception occurred")
+
+# Output: An exception occurred
+```
+
+### Many Exceptions
+You can define as many exception blocks as you want, e.g. if you want to execute a special block of code for a special kind of error:
+
+```python
+# Print one message if the try block raises a NameError and another for other errors:
+try:
+  print(x)
+except NameError:
+  print("Variable x is not defined")
+except:
+  print("Something else went wrong")
+
+# Output: Variable x is not defined
+```
+
+### Else
+You can use the `else` keyword to define a block of code to be executed if no errors were raised:
+
+```python
+# In this example, the try block does not generate any error:
+try:
+  print("Hello")
+except:
+  print("Something went wrong")
+else:
+  print("Nothing went wrong")
+
+# Output:
+# Hello
+# Nothing went wrong
+```
+
+### Finally
+The `finally` block, if specified, will be executed regardless if the try block raises an error or not.
+
+```python
+try:
+  print(x)
+except:
+  print("Something went wrong")
+finally:
+  print("The 'try except' is finished")
+
+# Output:
+# Something went wrong
+# The 'try except' is finished
+```
+*(This can be useful to close objects and clean up resources)*
+
+### Raise an exception
+As a Python developer you can choose to throw an exception if a condition occurs.
+To throw (or raise) an exception, use the `raise` keyword.
+
+```python
+x = -1
+
+if x < 0:
+  raise Exception("Sorry, no numbers below zero")
+
+# Output: Exception: Sorry, no numbers below zero
+```
+
+You can define what kind of error to raise, and the text to print to the user:
+
+```python
+x = "hello"
+
+if not type(x) is int:
+  raise TypeError("Only integers are allowed")
+
+# Output: TypeError: Only integers are allowed
+```
+
+---
+
+## OOP — Object-Oriented Programming
+
+Object-Oriented Programming (OOP) is a programming paradigm based on the concept of **objects** — which bundle **data (attributes)** and **behavior (methods)** together.
+
+| Pillar | Meaning |
+|---|---|
+| **Encapsulation** | Hiding internal data; exposing only what's needed |
+| **Inheritance** | A class can inherit attributes and methods from another class |
+| **Polymorphism** | The same method name can behave differently in different classes |
+| **Abstraction** | Hiding complex implementation details behind a simple interface |
+
+> **Key Facts:**
+> - Everything in Python is an **object**
+> - A **class** is a blueprint; an **object** is an instance of that blueprint
+> - Use `class` keyword to define a class
+
+---
+
+### Classes and Objects
+
+A **class** is like a template. An **object** is a real instance created from that template.
+
+```python
+class Dog:
+    species = "Canis familiaris"  # Class variable (shared by all instances)
+
+    def __init__(self, name, age):
+        self.name = name          # Instance variable
+        self.age = age            # Instance variable
+
+    def bark(self):
+        return f"{self.name} says Woof!"
+
+# Creating objects (instances)
+dog1 = Dog("Rex", 3)
+dog2 = Dog("Buddy", 5)
+
+print(dog1.name)    # Output: Rex
+print(dog2.age)     # Output: 5
+print(dog1.bark())  # Output: Rex says Woof!
+print(type(dog1))   # Output: <class '__main__.Dog'>
+```
+
+---
+
+### The `__init__()` Method
+
+`__init__()` is the **constructor** — it runs automatically every time a new object is created.
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+p1 = Person("Rijoan", 24)
+print(p1.name)  # Output: Rijoan
+print(p1.age)   # Output: 24
+```
+
+> **Note:** `__init__()` is called automatically — you never call it manually. It is the right place to set up all instance variables.
+
+---
+
+### The `self` Parameter
+
+`self` refers to the **current instance** of the class. It must be the **first parameter** of every method.
+
+```python
+class Car:
+    def __init__(self, brand, color):
+        self.brand = brand
+        self.color = color
+
+    def describe(self):
+        return f"I drive a {self.color} {self.brand}."
+
+my_car = Car("Toyota", "Red")
+print(my_car.describe())  # Output: I drive a Red Toyota.
+```
+
+> **Tip:** `self` is a convention — you could technically name it anything, but always use `self` for readability.
+
+---
+
+### Object Methods
+
+Methods are **functions defined inside a class** that describe what an object can do.
+
+```python
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        return f"Deposited {amount}. New balance: {self.balance}"
+
+    def withdraw(self, amount):
+        if amount > self.balance:
+            return "Insufficient funds!"
+        self.balance -= amount
+        return f"Withdrew {amount}. Remaining: {self.balance}"
+
+    def get_balance(self):
+        return f"{self.owner}'s balance: {self.balance}"
+
+account = BankAccount("Rijoan", 1000)
+print(account.deposit(500))    # Output: Deposited 500. New balance: 1500
+print(account.withdraw(200))   # Output: Withdrew 200. Remaining: 1300
+print(account.get_balance())   # Output: Rijoan's balance: 1300
+```
+
+---
+
+### Modify and Delete Object Properties
+
+```python
+class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+s1 = Student("Rijoan", "A")
+
+# Modify a property
+s1.grade = "A+"
+print(s1.grade)  # Output: A+
+
+# Add a new property
+s1.subject = "Python"
+print(s1.subject)  # Output: Python
+
+# Delete a property
+del s1.subject
+# print(s1.subject)  # Would raise AttributeError
+
+# Delete the entire object
+del s1
+# print(s1)  # Would raise NameError
+```
+
+---
+
+### Inheritance
+
+Inheritance allows a class (**child**) to **reuse** attributes and methods from another class (**parent**).
+
+```python
+# Parent class
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return f"{self.name} makes a sound."
+
+    def eat(self):
+        return f"{self.name} is eating."
+
+# Child class — inherits from Animal
+class Cat(Animal):
+    def speak(self):                          # Override parent method
+        return f"{self.name} says Meow!"
+
+class Dog(Animal):
+    def speak(self):                          # Override parent method
+        return f"{self.name} says Woof!"
+
+cat = Cat("Whiskers")
+dog = Dog("Rex")
+
+print(cat.speak())  # Output: Whiskers says Meow!
+print(dog.speak())  # Output: Rex says Woof!
+print(cat.eat())    # Output: Whiskers is eating.  (inherited from Animal)
+```
+
+> **Syntax:** `class ChildClass(ParentClass):`
+
+---
+
+### The `super()` Function
+
+`super()` lets the child class call methods from its **parent class** — most commonly used in `__init__()` to avoid repeating code.
+
+```python
+class Animal:
+    def __init__(self, name, sound):
+        self.name = name
+        self.sound = sound
+
+    def describe(self):
+        return f"{self.name} goes {self.sound}."
+
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name, "Woof")  # Call parent __init__
+        self.tricks = []                 # Extra instance variable
+
+    def learn_trick(self, trick):
+        self.tricks.append(trick)
+        return f"{self.name} learned: {trick}!"
+
+dog = Dog("Rex")
+print(dog.describe())            # Output: Rex goes Woof.
+print(dog.learn_trick("Sit"))    # Output: Rex learned: Sit!
+print(dog.tricks)                # Output: ['Sit']
+```
+
+---
+
+### Override Methods
+
+A child class can **replace** a parent method with its own version by defining a method with the **same name**.
+
+```python
+class Shape:
+    def area(self):
+        return 0
+
+    def describe(self):
+        return f"This shape has area: {self.area()}"
+
+class Rectangle(Shape):
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):                          # Override parent's area()
+        return self.width * self.height
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):                          # Override parent's area()
+        return 3.14159 * self.radius ** 2
+
+rect = Rectangle(5, 3)
+circ = Circle(4)
+
+print(rect.describe())  # Output: This shape has area: 15
+print(circ.describe())  # Output: This shape has area: 50.26544
+```
+
+---
+
+### Multiple Inheritance
+
+Python supports inheriting from **more than one parent class**.
+
+```python
+class Flyable:
+    def fly(self):
+        return "I can fly!"
+
+class Swimmable:
+    def swim(self):
+        return "I can swim!"
+
+class Duck(Flyable, Swimmable):    # Inherits from both
+    def __init__(self, name):
+        self.name = name
+
+    def quack(self):
+        return f"{self.name} says Quack!"
+
+duck = Duck("Donald")
+print(duck.fly())    # Output: I can fly!
+print(duck.swim())   # Output: I can swim!
+print(duck.quack())  # Output: Donald says Quack!
+```
+
+> **Tip:** Python uses **MRO (Method Resolution Order)** — left to right — when resolving methods from multiple parents. Use `ClassName.__mro__` to inspect the order.
+
+---
+
+### Encapsulation
+
+Encapsulation means **restricting direct access** to some object data. Python uses naming conventions for this.
+
+| Convention | Access | Example |
+|---|---|---|
+| `name` | Public — accessible from anywhere | `self.name` |
+| `_name` | Protected — convention: internal use only | `self._salary` |
+| `__name` | Private — name-mangled, hard to access from outside | `self.__password` |
+
+```python
+class Employee:
+    def __init__(self, name, salary):
+        self.name = name             # Public
+        self._department = "IT"      # Protected (convention)
+        self.__salary = salary       # Private (name-mangled)
+
+    def get_salary(self):            # Controlled access method
+        return self.__salary
+
+    def give_raise(self, amount):
+        if amount > 0:
+            self.__salary += amount
+
+emp = Employee("Rijoan", 50000)
+print(emp.name)           # Output: Rijoan
+print(emp._department)    # Output: IT  (accessible but discouraged)
+print(emp.get_salary())   # Output: 50000
+
+emp.give_raise(5000)
+print(emp.get_salary())   # Output: 55000
+
+# print(emp.__salary)     # AttributeError — name is mangled to _Employee__salary
+print(emp._Employee__salary)  # Output: 55000 (can access via mangled name)
+```
+
+---
+
+### Getters and Setters (`@property`)
+
+The `@property` decorator turns a method into a **read-only attribute**. Use `@name.setter` to allow writing.
+
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self.__celsius = celsius
+
+    @property
+    def celsius(self):             # Getter
+        return self.__celsius
+
+    @celsius.setter
+    def celsius(self, value):      # Setter with validation
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero!")
+        self.__celsius = value
+
+    @property
+    def fahrenheit(self):          # Computed property (no setter)
+        return self.__celsius * 9/5 + 32
+
+temp = Temperature(25)
+print(temp.celsius)      # Output: 25
+print(temp.fahrenheit)   # Output: 77.0
+
+temp.celsius = 100
+print(temp.fahrenheit)   # Output: 212.0
+
+# temp.celsius = -300    # Would raise ValueError
+```
+
+---
+
+### Polymorphism
+
+Polymorphism means the **same interface** works differently depending on the object. The same method name behaves differently per class.
+
+```python
+class Dog:
+    def speak(self):
+        return "Woof!"
+
+class Cat:
+    def speak(self):
+        return "Meow!"
+
+class Duck:
+    def speak(self):
+        return "Quack!"
+
+# The same function works with any class that has .speak()
+def make_sound(animal):
+    print(animal.speak())
+
+animals = [Dog(), Cat(), Duck()]
+for animal in animals:
+    make_sound(animal)
+# Output:
+# Woof!
+# Meow!
+# Quack!
+```
+
+> **Note:** This is also called **duck typing** — "if it walks like a duck and quacks like a duck, it's a duck." Python doesn't require formal interfaces; any object with the right method works.
+
+---
+
+### Abstraction
+
+Abstraction hides complex implementation details. In Python, use the **`abc` module** to define abstract classes — classes that **cannot be instantiated** and force child classes to implement required methods.
+
+```python
+from abc import ABC, abstractmethod
+
+class Shape(ABC):              # Abstract base class
+    @abstractmethod
+    def area(self):            # Must be implemented by every child
+        pass
+
+    @abstractmethod
+    def perimeter(self):       # Must be implemented by every child
+        pass
+
+    def describe(self):        # Concrete method (shared, not abstract)
+        return f"Area: {self.area()}, Perimeter: {self.perimeter()}"
+
+class Rectangle(Shape):
+    def __init__(self, w, h):
+        self.w = w
+        self.h = h
+
+    def area(self):
+        return self.w * self.h
+
+    def perimeter(self):
+        return 2 * (self.w + self.h)
+
+class Circle(Shape):
+    def __init__(self, r):
+        self.r = r
+
+    def area(self):
+        return 3.14159 * self.r ** 2
+
+    def perimeter(self):
+        return 2 * 3.14159 * self.r
+
+rect = Rectangle(4, 6)
+circ = Circle(5)
+
+print(rect.describe())  # Output: Area: 24, Perimeter: 20
+print(circ.describe())  # Output: Area: 78.53975, Perimeter: 31.4159
+
+# shape = Shape()  # TypeError — cannot instantiate abstract class
+```
+
+---
+
+### Class Variables vs Instance Variables
+
+| Type | Defined In | Shared? | Access |
+|---|---|---|---|
+| **Class variable** | Inside class, outside `__init__` | Yes — all instances share it | `ClassName.var` or `self.var` |
+| **Instance variable** | Inside `__init__` via `self` | No — unique per object | `self.var` |
+
+```python
+class Counter:
+    count = 0              # Class variable — shared by ALL instances
+
+    def __init__(self, name):
+        Counter.count += 1         # Modify class variable
+        self.name = name           # Instance variable — unique per object
+        self.id = Counter.count    # Assign current count as ID
+
+c1 = Counter("Alice")
+c2 = Counter("Bob")
+c3 = Counter("Charlie")
+
+print(Counter.count)   # Output: 3  (shared)
+print(c1.id)           # Output: 1
+print(c2.id)           # Output: 2
+print(c3.name)         # Output: Charlie
+```
+
+---
+
+### Class Methods and Static Methods
+
+| Decorator | First Parameter | Can Access | Use Case |
+|---|---|---|---|
+| *(none)* | `self` | Instance + class data | Regular object method |
+| `@classmethod` | `cls` | Class data only | Factory methods, class-level logic |
+| `@staticmethod` | *(none)* | Nothing — standalone | Utility/helper functions |
+
+```python
+class Person:
+    population = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.population += 1
+
+    def greet(self):                      # Regular instance method
+        return f"Hi, I'm {self.name}!"
+
+    @classmethod
+    def get_population(cls):              # Class method
+        return f"Total people: {cls.population}"
+
+    @classmethod
+    def from_birth_year(cls, name, birth_year):  # Factory class method
+        age = 2026 - birth_year
+        return cls(name, age)             # Creates a new instance
+
+    @staticmethod
+    def is_adult(age):                    # Static method — no self or cls
+        return age >= 18
+
+p1 = Person("Rijoan", 24)
+p2 = Person.from_birth_year("Maruf", 2000)  # Use factory method
+
+print(p1.greet())               # Output: Hi, I'm Rijoan!
+print(Person.get_population())  # Output: Total people: 2
+print(Person.is_adult(20))      # Output: True
+print(Person.is_adult(15))      # Output: False
+print(p2.age)                   # Output: 26
+```
+
+---
+
+### Magic / Dunder Methods
+
+Magic methods (also called **dunder methods** — double underscore) let you define how your objects behave with built-in Python operations.
+
+| Method | Triggered By | Description |
+|---|---|---|
+| `__init__(self)` | `MyClass()` | Constructor |
+| `__str__(self)` | `print(obj)` / `str(obj)` | Human-readable string representation |
+| `__repr__(self)` | `repr(obj)` / in shell | Developer/debug string representation |
+| `__len__(self)` | `len(obj)` | Returns length |
+| `__add__(self, other)` | `obj1 + obj2` | Addition operator |
+| `__eq__(self, other)` | `obj1 == obj2` | Equality check |
+| `__lt__(self, other)` | `obj1 < obj2` | Less-than comparison |
+| `__contains__(self, item)` | `item in obj` | Membership test |
+| `__del__(self)` | `del obj` | Destructor |
+
+```python
+class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def __str__(self):
+        return f"'{self.title}' by {self.author}"
+
+    def __repr__(self):
+        return f"Book(title={self.title!r}, author={self.author!r}, pages={self.pages})"
+
+    def __len__(self):
+        return self.pages
+
+    def __eq__(self, other):
+        return self.title == other.title and self.author == other.author
+
+    def __lt__(self, other):
+        return self.pages < other.pages
+
+    def __add__(self, other):
+        combined_title = f"{self.title} & {other.title}"
+        return Book(combined_title, "Various", self.pages + other.pages)
+
+b1 = Book("Python Basics", "Rijoan", 300)
+b2 = Book("Advanced Python", "Maruf", 500)
+
+print(b1)            # Output: 'Python Basics' by Rijoan   (uses __str__)
+print(repr(b1))      # Output: Book(title='Python Basics', ...)  (uses __repr__)
+print(len(b1))       # Output: 300   (uses __len__)
+print(b1 == b2)      # Output: False  (uses __eq__)
+print(b1 < b2)       # Output: True   (uses __lt__)
+combined = b1 + b2   # uses __add__
+print(combined)      # Output: 'Python Basics & Advanced Python' by Various
+print(len(combined)) # Output: 800
+```
+
+---
+
+### OOP Quick Reference
+
+| Concept | Keyword / Syntax | Purpose |
+|---|---|---|
+| Define a class | `class MyClass:` | Blueprint for objects |
+| Constructor | `def __init__(self, ...)` | Runs on object creation |
+| Create an object | `obj = MyClass(...)` | Instantiate a class |
+| Instance method | `def method(self):` | Behavior tied to object |
+| Class method | `@classmethod` + `cls` | Tied to the class itself |
+| Static method | `@staticmethod` | Utility, no class/instance ref |
+| Inheritance | `class Child(Parent):` | Reuse parent code |
+| Call parent | `super().__init__(...)` | Access parent constructor/methods |
+| Override | Redefine a method in child | Change parent behavior |
+| Abstract class | `ABC` + `@abstractmethod` | Force child to implement methods |
+| Property getter | `@property` | Access method like attribute |
+| Property setter | `@name.setter` | Set with validation |
+| Private attribute | `self.__name` | Name-mangled, access controlled |
+| Protected attribute | `self._name` | Convention — internal use |
+| String repr | `__str__` / `__repr__` | `print()` and `repr()` behavior |
+
+---
+
+## What's Next
+
+Topics coming up in practice:
+
+| Topic | Description |
+|---|---|
+| **File Handling** | Read and write files |
+
+---
+
+<div align="center">
+
+*Python Notes — Up to OOP*
+
+</div>
 
